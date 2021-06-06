@@ -41,22 +41,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "83e23941491c7cce0cda92a4fdfe54c8");
         setContentView(R.layout.activity_main);
+//        create();
 //        update();
-          query();
-//        person p2 = new person();
-//        p2.setNum(1);
-//        p2.setName("lucky");
-//        p2.setAddress("北京海淀");
-//        p2.save(new SaveListener<String>() {
-//            @Override
-//            public void done(String objectId, BmobException e) {
-//                if(e==null){
-//                    Toast.makeText(getApplication(),"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(getApplication(),"=失败："+e.getMessage(),Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+//        query();
+
 //        texts = (TextView) findViewById(R.id.text);
 //        bg = (SmartImageView) findViewById(R.id.bgs);
 //        getAsyn("https://restapi.amap.com/v3/weather/weatherInfo?key=07ce7c4969a77c908df5bc177601983d&city=河源");
@@ -64,6 +52,25 @@ public class MainActivity extends AppCompatActivity {
 //        images.setImageUrl("https://tva2.sinaimg.cn/large/0072Vf1pgy1foxk744kw6j31hc0u0ni5.jpg");
 //        getbg("https://api.dongmanxingkong.com/suijitupian/acg/1080p/index.php?return=json");
     }
+
+    private void create()
+    {
+        person p2 = new person();
+        p2.setNum(1);
+        p2.setName("lucky");
+        p2.setAddress("北京海淀");
+        p2.save(new SaveListener<String>() {
+            @Override
+            public void done(String objectId, BmobException e) {
+                if(e==null){
+                    Toast.makeText(getApplication(),"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplication(),"=失败："+e.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     private void update() {
         person category = new person();
         category.setName("威威");
