@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/b1"
     tools:context=".MainActivity">
 
+    <com.loopj.android.image.SmartImageView
+            android:id="@+id/bgs"
+            android:layout_width="1440dp"
+            android:layout_height="3040dp"
+            android:scaleType="matrix" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:id="@+id/text"
-        android:text="第九婚嫁"
+        android:text="天气"
         android:textSize="18sp"/>
 
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/abc"
+        android:layout_width="500dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="28dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
