@@ -2,6 +2,7 @@ package com.example.one;
 
 import android.util.Log;
 
+import java.util.Arrays;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -63,5 +64,19 @@ public class database {
         });
     }
 
-
+//    private void deleteObject() {
+//        person p2 = new person();
+//        p2.removeAll("cards", Arrays.asList(new BankCard("建行", "111")));
+//        p2.setObjectId(objectId);
+//        p2.update(new UpdateListener() {
+//            @Override
+//            public void done(BmobException e) {
+//                if(e==null){
+//                    ("删除成功");
+//                }else{
+//                    loge(e);
+//                }
+//            }
+//        });
+//    }
 }

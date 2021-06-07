@@ -2,11 +2,16 @@ package com.example.one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.one.activity.login_activity;
+import com.example.one.activity.register_activity;
 import com.google.android.material.snackbar.Snackbar;
 import com.loopj.android.image.SmartImageView;
 
@@ -20,6 +25,7 @@ import java.util.List;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
@@ -36,12 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView texts;
     private SmartImageView bg;
+    private Button btn_registers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "83e23941491c7cce0cda92a4fdfe54c8");
-        setContentView(R.layout.activity_main);
-        delete();
+        setContentView(R.layout.activity_mains);
+        initView();
+        initData();
+
+
+//        delete();
 //        create();
 //        update();
 //        query();
@@ -53,6 +64,38 @@ public class MainActivity extends AppCompatActivity {
 //        images.setImageUrl("https://tva2.sinaimg.cn/large/0072Vf1pgy1foxk744kw6j31hc0u0ni5.jpg");
 //        getbg("https://api.dongmanxingkong.com/suijitupian/acg/1080p/index.php?return=json");
     }
+
+    protected void initView() { // 一个用来注册的方法（查找）
+        btn_registers = findViewById(R.id.btn_register);
+    }
+
+    protected void initData() {
+        btn_registers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, register_activity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void onclick1(View v)
+    {
+        Intent intent = new Intent(MainActivity.this, login_activity.class);
+        startActivity(intent);
+//        BmobUser.requestEmailVerify("1559295172@qq.com", new UpdateListener() {
+//            @Override
+//            public void done(BmobException e) {
+//                if(e==null){
+//                    Toast.makeText(MainActivity.this,"请求验证邮件成功，请到 1559295172@qq.com 邮箱中进行激活,如果没有激活无法登录!",Toast.LENGTH_LONG).show();
+////                        showToast("请求验证邮件成功，请到" + email + "邮箱中进行激活,如果没有激活无法登录!");
+//                }else{
+//                    Toast.makeText(MainActivity.this,"失败",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+    }
+
 
 //        bmobQuery.getObject("", new QueryListener<person>() {
 //            @Override
@@ -69,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     private void delete() // 删除
     {
         person p2 = new person();
-        /// 大问题
+        /// 大问
         p2.delete(new UpdateListener() {
             @Override
             public void done(BmobException e) {

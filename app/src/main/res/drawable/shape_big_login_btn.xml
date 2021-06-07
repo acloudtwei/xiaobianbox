@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/bt_login_begin" />
+    <corners android:radius="50dp" />
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/bt_login_begin"
+        android:endColor="@color/colorAccent"
+        android:startColor="@color/bt_login_end">
+
+    </gradient>
+
+</shape>

@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="divider">#e8e7e7</color>
+    <color name="skin_text_white">#ffffff</color>
+    <color name="skin_topbar_bg_color">#344261</color>
+    <color name="bt_login_begin">#66d9e8</color>
+    <color name="bt_login_end">#15aabf</color>
+    <color name="bt_register_begin">#fcc2d7</color>
+    <color name="bt_register_end">#eebefa</color>
+
 </resources>
