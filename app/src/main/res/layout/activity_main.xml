@@ -12,13 +12,13 @@
             android:scaleType="matrix" />
 
     <TextView
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/text"
         android:text="天气"
-        android:textSize="18sp"/>
+        android:textSize="58sp"/>
 
     <com.loopj.android.image.SmartImageView
         android:id="@+id/abc"
