@@ -14,5 +14,6 @@
     <string name="btn_registe">注册</string>
 
     <!--邮箱部分 -->
+    <string name="hint_email">请输入邮箱</string>
 
 </resources>

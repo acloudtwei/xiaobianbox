@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_329dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/login" />
+        android:src="@mipmap/bg_top" />
 
     <LinearLayout
         android:layout_width="match_parent"
