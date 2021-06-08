@@ -1,7 +1,7 @@
 package com.example.one;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.one.activity.homeactivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -81,8 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onclick1(View v)
     {
-        Intent intent = new Intent(MainActivity.this, login_activity.class);
+        Intent intent = new Intent(MainActivity.this,homeactivity.class);
         startActivity(intent);
+//        Intent intent = new Intent(MainActivity.this, login_activity.class);
+//        startActivity(intent);
 //        BmobUser.requestEmailVerify("1559295172@qq.com", new UpdateListener() {
 //            @Override
 //            public void done(BmobException e) {
