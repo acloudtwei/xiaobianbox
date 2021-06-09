@@ -16,4 +16,10 @@
     <!--邮箱部分 -->
     <string name="hint_email">请输入邮箱</string>
 
+
+    <!-- 首页设计部分 -->
+    <string name="layout_top1">我叫蔡灿雄</string>
+    <string name="layout_top2">生活就像海洋，只有意志坚强的人才能到达彼岸！</string>
+
+
 </resources>
