@@ -4,7 +4,6 @@
     <solid android:color="@color/bt_login_begin" />
 <!--    <corners android:radius="50dp" />-->
     <gradient
-        android:angle="0dp"
         android:centerColor="@color/bt_login_begin"
         android:endColor="@color/colorAccent"
         android:startColor="@color/bt_login_end">
