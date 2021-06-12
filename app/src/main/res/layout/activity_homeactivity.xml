@@ -15,7 +15,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:gravity="center"
             android:text="@string/layout_top1"
             android:textSize="@dimen/dimen_18sp"/>
@@ -24,6 +24,7 @@
             android:id="@+id/layout_top2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="@string/layout_top2"
             android:textSize="13sp"
             android:gravity="center"/>
