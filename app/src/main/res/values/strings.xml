@@ -22,4 +22,27 @@
     <string name="layout_top2">生活就像海洋，只有意志坚强的人才能到达彼岸！</string>
 
 
+    <!--    android:layout_alignParentLeft="true"  &#45;&#45;将控件的左边缘和父控件的左边缘对齐-->
+    <!--    android:layout_alignParentTop="true"  &#45;&#45;将控件的上边缘和父控件的上边缘对齐-->
+    <!--    android:layout_alignParentRight="true"  &#45;&#45;将控件的右边缘和父控件的右边缘对齐-->
+    <!--    android:layout_alignParentBottom="true" &#45;&#45;将控件的底边缘和父控件的底边缘对齐-->
+
+    <!--    android:layout_centerInParent="true"  &#45;&#45;将控件置于父控件的中心位置-->
+    <!--    android:layout_centerHorizontal="true"  &#45;&#45;将控件置于水平方向的中心位置-->
+    <!--    android:layout_centerVertical="true"  &#45;&#45;将控件置于垂直方向的中心位置-->
+
+
+    <!--    android : layout_marginxxx的用法是指当前组件距离其父组件在xxx方向上的边距-->
+    <!--    -->
+    <!--padding是相对于当前组件而言的，就是指组件内的文本距离当前组件xxx-->
+
+
+    <!--    padding值设置的是控件里的内容距控件边上的距离。-->
+    <!--    当paddingBottom、paddingTop、paddingLeft、paddingRight设置的值相同时，可以使用padding属性代替。-->
+
+    <!--    而INVISIBLE和GONE的主要区别是：当控件visibility属性为INVISIBLE时，界面保留了view控件所占有的空间；而控件属性为GONE时，-->
+    <!--    界面则不保留view控件所占有的空间。可以用来设置一个控件是否要隐藏不可见还是说可见-->
+    <!--    在Android开发中，大部分控件都有visibility这个属性，其属性有3个分别为“visible ”、“invisible”、“gone”。-->
+    <!--    主要用来设置控制控件的显示和隐藏。有些人可能会疑惑Invisible和gone是有什么区别的？？？那么，我们带着这个疑问看下面：-->
+
 </resources>
