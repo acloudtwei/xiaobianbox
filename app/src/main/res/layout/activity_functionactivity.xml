@@ -16,7 +16,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:gravity="center"
             android:text="@string/layout_top1"
             android:textSize="@dimen/dimen_18sp"/>
@@ -25,6 +25,7 @@
             android:id="@+id/layout_top2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="@string/layout_top2"
             android:textSize="13sp"
             android:gravity="center"/>
@@ -43,12 +44,11 @@
             android:layout_marginTop="200dp"
             android:orientation="horizontal">
 
-
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/collect_select" />
+                android:src="@mipmap/fei" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,35 +58,97 @@
                 android:gravity="center"
                 android:text="@string/layout_top1"
                 android:textSize="@dimen/dimen_18sp" />
-
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
-
-            <ImageView
+            <Button
+                android:layout_marginLeft="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/collect_select" />
+                android:background="@drawable/shape_login_btn"
+                android:text="hahha"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
+            <Button
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/shape_big_register_btn"
-                android:gravity="center"
-                android:text="@string/layout_top1"
-                android:textSize="@dimen/dimen_18sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_register_btn"
+                android:text="hahha"/>
+
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_login_btn"
+                    android:text="hahha"/>
+
+                <Button
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_register_btn"
+                    android:text="hahha"/>
+
+                <Button
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_register_btn"
+                    android:text="hahha"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
+
+<!--    -->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="200dp"-->
+<!--            android:orientation="horizontal">-->
+
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@mipmap/collect_select" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="45dp"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:background="@drawable/shape_big_register_btn"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/layout_top1"-->
+<!--                android:textSize="@dimen/dimen_18sp" />-->
+
+<!--        </LinearLayout>-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -180,5 +242,6 @@
                 android:text="我的"/>
 
         </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
