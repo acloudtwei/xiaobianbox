@@ -30,6 +30,7 @@ android {
 
 dependencies {
 
+    implementation 'com.githang:status-bar-compat:0.7'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'io.github.bmob:android-sdk:3.8.4'
     implementation "io.reactivex.rxjava2:rxjava:2.2.8"

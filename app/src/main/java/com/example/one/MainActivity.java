@@ -1,6 +1,7 @@
 package com.example.one;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.one.activity.homeactivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.one.activity.login_activity;
 import com.example.one.activity.register_activity;
+import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.snackbar.Snackbar;
 import com.loopj.android.image.SmartImageView;
 
@@ -48,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "83e23941491c7cce0cda92a4fdfe54c8");
         setContentView(R.layout.activity_mains);
+//        StatusBarCompat.setStatusBarColor(this, color, lightStatusBar)
+//        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorAccent));
+        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.colorPrimary),false);
         initView();
         initData();
 

@@ -20,6 +20,7 @@ allprojects {
         jcenter() // Warning: this repository is going to shut down soon
         maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
 
+
     }
 }
 
