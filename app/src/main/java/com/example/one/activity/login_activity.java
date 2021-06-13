@@ -12,6 +12,7 @@ import com.example.one.MainActivity;
 import com.example.one.R;
 import com.example.one.person;
 import com.example.one.util.StringUtils;
+import com.githang.statusbar.StatusBarCompat;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class login_activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logins);
+        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         initView();
         initData();
     }

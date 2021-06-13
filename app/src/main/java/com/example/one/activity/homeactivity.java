@@ -2,6 +2,7 @@ package com.example.one.activity;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -13,11 +14,13 @@ import com.example.one.textcolor.*;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.one.R;
+import com.githang.statusbar.StatusBarCompat;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -44,6 +47,7 @@ public class homeactivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeactivity);
+        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         init();
         handler = new Handler(new Handler.Callback() {
             @Override
@@ -72,6 +76,12 @@ public class homeactivity extends AppCompatActivity {
         textcolor1.setTextViewStyles(home);
         textcolor1.setTextViewStyles(function);
         textcolor1.setTextViewStyles(my);
+    }
+
+    public void onclick_function(View view)
+    {
+        Intent intent = new Intent(homeactivity.this,functionactivity.class);
+        startActivity(intent);
     }
 
     private void getTopText()

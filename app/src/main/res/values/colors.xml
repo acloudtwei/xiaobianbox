@@ -19,5 +19,6 @@
     <color name="bt_register_end">#eebefa</color>
     <color name="button_begin">#faaca8</color>
     <color name="button_end">#ddd6f3</color>
+    <color name="top_color">#faa2c1</color>
 
 </resources>

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.one.R;
 import com.example.one.util.StringUtils;
+import com.githang.statusbar.StatusBarCompat;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
@@ -26,6 +27,7 @@ public class register_activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registers);
+        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         initView();
         initData();
     }

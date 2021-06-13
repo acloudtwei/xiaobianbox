@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mains);
 //        StatusBarCompat.setStatusBarColor(this, color, lightStatusBar)
 //        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorAccent));
-        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.colorPrimary),false);
+        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         initView();
         initData();
 
