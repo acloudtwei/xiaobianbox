@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true"
-        android:drawable="@mipmap/beaushouye"/>
+        android:drawable="@drawable/all_button_layout_end"/>
     <item android:state_pressed="false"
-        android:drawable="@mipmap/shouye"/>
+        android:drawable="@drawable/all_button_layout_begin"/>
 </selector>

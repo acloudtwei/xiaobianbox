@@ -18,8 +18,11 @@
 
 
     <!-- 首页设计部分 -->
-    <string name="layout_top1">我叫蔡灿雄</string>
+    <string name="layout_top1">威威工具箱</string>
     <string name="layout_top2">生活就像海洋，只有意志坚强的人才能到达彼岸！</string>
+    <string name="function1">常用工具</string>
+    <string name="function2">特别工具</string>
+
 
 
     <!--    android:layout_alignParentLeft="true"  &#45;&#45;将控件的左边缘和父控件的左边缘对齐-->
@@ -44,5 +47,36 @@
     <!--    界面则不保留view控件所占有的空间。可以用来设置一个控件是否要隐藏不可见还是说可见-->
     <!--    在Android开发中，大部分控件都有visibility这个属性，其属性有3个分别为“visible ”、“invisible”、“gone”。-->
     <!--    主要用来设置控制控件的显示和隐藏。有些人可能会疑惑Invisible和gone是有什么区别的？？？那么，我们带着这个疑问看下面：-->
+
+
+<!--    http://ai.kenaisq.top/API/tiangou.php 天狗日记-->
+<!--    http://ai.kenaisq.top/API/xh.php 笑话-->
+<!--    https://tenapi.cn/video/?url=http://service.picasso.adesk.com/v1/lightwp/category 抖音解析-->
+<!--    http://service.picasso.adesk.com/v1/lightwp/category 图片大全-->
+<!--    https://v1.jinrishici.com/all.txt 随机一言-->
+<!--    https://q1.qlogo.cn/headimg_dl?dst_uin=1559295172&spec=100 获取qq头像-->
+<!--    http://api.suolink.cn/api.htm?url=https://www.chinairn.com/hyzx/20210209/144031710.shtml&key=5ef9aa3c3a005a7ad3a71834@80d744dc0f961dc6d734ab07b23022b1-->
+<!--    生成短链接-->
+<!--    https://xiaojieapi.com/2021/05/16/491DA.html 笑话接口-->
+<!--    https://xiaojieapi.com/2021/04/17/B6B35.html 保安日记-->
+<!--    https://xiaojieapi.com/2021/05/16/F0BB1.html 百度翻译-->
+<!--    https://xiaojieapi.com/2021/04/17/2FCC9.html 看黄图片-->
+<!--    https://xiaojieapi.com/2021/04/17/EE514.html ocr文字识别 垃圾-->
+<!--    https://xiaojieapi.com/2021/04/16/E9F40.html 快递查询-->
+<!--    https://xiaojieapi.com/2021/04/16/703D5.html 随即一言-->
+<!--    https://xiaojieapi.com/2021/03/20/58B39.html 60s看世界-->
+<!--    https://xiaojieapi.com/2021/03/20/49ECC.html 每日新闻-->
+
+<!--    background: linear-gradient(to bottom, #00F5A0, #00D9F5);-->
+<!--    background: linear-gradient(to bottom, #FBD3E9, #BB377D);-->
+<!--    background: linear-gradient(to bottom, #BE93C5, #7BC6CC);-->
+<!--    background: linear-gradient(to bottom, #ddd6f3, #faaca8);-->
+
+<!--    // 下面有bug-->
+<!--    http://api.63code.com/history/api.php?format=json 历史上的今天-->
+<!--    https://api.63code.com/qrcode/ 二维码生成-->
+<!--    https://api.63code.com/garbage/ 垃圾分类-->
+<!--    https://api.63code.com/yan/ 随机一言-->
+<!--    https://api.63code.com/translate_v1/ 高级翻译-->
 
 </resources>

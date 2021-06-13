@@ -17,5 +17,7 @@
     <color name="bt_login_end">#15aabf</color>
     <color name="bt_register_begin">#fcc2d7</color>
     <color name="bt_register_end">#eebefa</color>
+    <color name="button_begin">#faaca8</color>
+    <color name="button_end">#ddd6f3</color>
 
 </resources>
