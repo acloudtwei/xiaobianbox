@@ -1,10 +1,13 @@
 package com.example.one;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.one.activity.homeactivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -43,18 +46,35 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private TextView texts;
-    private SmartImageView bg;
     private Button btn_registers;
+    private SmartImageView bg;
+    private SmartImageView bgs;
+    private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "83e23941491c7cce0cda92a4fdfe54c8");
         setContentView(R.layout.activity_mains);
+        bgs = (SmartImageView) findViewById(R.id.main_bgs);
 //        StatusBarCompat.setStatusBarColor(this, color, lightStatusBar)
 //        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorAccent));
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         initView();
         initData();
+        get_bgs();
+        handler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                if(msg.what == 100)
+                {
+                    String url = (String)msg.obj;
+                    bgs.setImageUrl(url);
+                }
+                return true;
+            }
+        });
+
 
 
 //        delete();
@@ -116,6 +136,36 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+    
+    private void get_bgs()
+    {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url("https://xiaojieapi.com/api/v1/get/greet").get().build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback(){
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                try {
+                    JSONObject jsonobject = new JSONObject(response.body().string());
+                    Message message = new Message();
+                    message.what = 100;
+                    message.obj = jsonobject.optString("url");
+                    handler.sendMessage(message);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                bgs.setImageResource(R.mipmap.bgs);
+            }
+        });
+    }
+    
+    
+    
     private void delete() // 删除
     {
         person p2 = new person();
