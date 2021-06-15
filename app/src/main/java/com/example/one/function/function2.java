@@ -17,7 +17,7 @@ public class function2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_functionc2);
+        setContentView(R.layout.activity_function2);
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         textcolor();
     }
