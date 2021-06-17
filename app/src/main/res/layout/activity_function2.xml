@@ -123,9 +123,12 @@
     </LinearLayout>
 
     <ListView
+        android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"/>
+        android:layout_marginTop="250dp"
+        android:divider="#d9d9d9"
+        android:dividerHeight="1dp"/>
 
 
 </RelativeLayout>

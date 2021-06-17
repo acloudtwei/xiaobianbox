@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <com.loopj.android.image.SmartImageView
-            android:id="@+id/bgs"
-            android:layout_width="1440dp"
-            android:layout_height="3040dp"
-            android:scaleType="matrix" />
+    android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/text"
-        android:text="天气"
-        android:textSize="58sp"/>
-
-    <com.loopj.android.image.SmartImageView
-        android:id="@+id/abc"
-        android:layout_width="500dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="28dp" />
+        android:id="@+id/item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp">
+    </TextView>
 
 
-</RelativeLayout>
+</LinearLayout>
