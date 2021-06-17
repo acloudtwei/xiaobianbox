@@ -38,15 +38,16 @@
     android:layout_marginTop="80dp">
 
     <EditText
+        android:id="@+id/express_id"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:hint="输入" />
 
-    <ImageView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/xiangzuojiantou" />
+        android:background="@mipmap/xiangzuojiantou"/>
 
 </LinearLayout>
 
@@ -59,6 +60,7 @@
         android:orientation="horizontal">
 
     <ImageView
+        android:id="@+id/express_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
