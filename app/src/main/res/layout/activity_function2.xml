@@ -32,7 +32,7 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="55dp"
     android:orientation="horizontal"
     android:background="@drawable/inputbox"
     android:layout_marginTop="80dp">
@@ -45,21 +45,24 @@
         android:hint="输入" />
 
     <Button
+        android:onClick="onclicks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/xiangzuojiantou"/>
+        android:background="@mipmap/xiangzuojiantou"
+        tools:ignore="OnClick" />
 
 </LinearLayout>
 
 
 <LinearLayout
+        android:id="@+id/express_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="160dp"
         android:visibility="invisible"
         android:orientation="horizontal">
 
-    <ImageView
+    <com.loopj.android.image.SmartImageView
         android:id="@+id/express_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -93,12 +96,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="快递单号："/>
+            android:text="物流公司："/>
 
         <TextView
+            android:id="@+id/express_company"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="fsofmsof"/>
+            android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -114,9 +117,9 @@
                 android:text="快递单号："/>
 
             <TextView
+                android:id="@+id/express_ids"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="fsofmsof"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

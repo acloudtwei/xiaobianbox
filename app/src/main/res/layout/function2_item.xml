@@ -6,6 +6,7 @@
 
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -15,16 +16,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="#adb5bd"/>
+            android:textColor="#212529"/>
 
         <TextView
             android:id="@+id/express_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="right"
             android:textSize="15sp"
-            android:textColor="#3bc9db"/>
+            android:textColor="#212529"
+            android:layout_marginEnd="30dp" />
 
     </LinearLayout>
 
