@@ -11,10 +11,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <com.alex.textview.view.LinkTextView
             android:id="@+id/express_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:textSize="18sp"
             android:textColor="#212529"/>
 

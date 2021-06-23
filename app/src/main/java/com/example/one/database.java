@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.util.Arrays;
 import java.util.List;
-
+import com.example.one.sql.*;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;

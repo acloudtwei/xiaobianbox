@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bt_register_begin"
-    tools:context=".function.function1">
+    tools:context=".function.function3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,13 +21,151 @@
 
         <TextView
             android:id="@+id/function1_text"
-            android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginLeft="@dimen/dimen_20dp"
             android:text="@string/layout_top1"
-            android:textSize="@dimen/dimen_20sp"
-            android:layout_marginStart="@dimen/dimen_20dp" />
+            android:textSize="@dimen/dimen_20sp" />
 
     </LinearLayout>
+
+<EditText
+    android:id="@+id/qcode_text"
+    android:layout_marginTop="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="请输入二维码文本，如网址..."
+    android:theme="@style/hint_style"/>
+
+<LinearLayout
+    android:layout_marginTop="200dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+ <Button
+     android:id="@+id/color_choose1"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginStart="90dp"
+     android:text="选择前景色"
+     android:background="@drawable/color_picker1"
+     android:textColor="@color/white" />
+
+ <Button
+        android:id="@+id/color_choose2"
+        android:layout_marginLeft="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择后景色"
+        android:background="@drawable/color_picker1"
+        android:textColor="@color/white"/>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="50dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/size1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="尺寸大小："
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                    android:id="@+id/size2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前尺寸"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <biz.borealis.numberpicker.NumberPicker
+                android:id="@+id/num_choose1"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:np_max_number="100"
+                app:np_text_size_selected="10sp"
+                app:np_text_size="20sp"
+                app:np_text_color_selected="#a4e9a2"
+                app:np_text_color="#38d9a9"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/margin1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="边距大小："
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/margin2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当前边距"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <biz.borealis.numberpicker.NumberPicker
+                android:id="@+id/num_choose2"
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:np_max_number="100"
+                app:np_text_size_selected="10sp"
+                app:np_text_size="20sp"
+                app:np_text_color_selected="#a4e9a2"
+                app:np_text_color="#38d9a9"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/qcode_create"
+        android:layout_marginTop="500dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生成"
+        android:background="@drawable/all_button_layout"
+        android:textColor="@color/white"/>
+
 
 </RelativeLayout>

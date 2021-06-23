@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -52,8 +53,8 @@ public class function2 extends AppCompatActivity {
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         init();
         textcolor();
-}
 
+}
 
 private void init()
 {
@@ -64,6 +65,7 @@ private void init()
     express_main = (LinearLayout) findViewById(R.id.express_main);
 
 }
+
 public void onclicks(View view)
 {
               String url = "https://xiaojieapi.com/api/v1/get/express?num=" + express_id.getText().toString().trim();

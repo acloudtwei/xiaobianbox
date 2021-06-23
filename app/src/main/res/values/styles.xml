@@ -1,0 +1,8 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="hint_style" parent="QMUI.Compat">
+<!--        <item name="colorControlNormal">@color/top_color</item>-->
+        <item name="colorControlActivated">@color/top_color</item>
+    </style>
+
+</resources>

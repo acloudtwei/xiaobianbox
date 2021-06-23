@@ -2,7 +2,7 @@ package com.example.one;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.one.sql.*;
 import com.example.one.activity.homeactivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,14 +19,19 @@ import com.example.one.activity.register_activity;
 import com.githang.statusbar.StatusBarCompat;
 import com.loopj.android.image.SmartImageView;
 
+
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,32 +46,34 @@ public class MainActivity extends AppCompatActivity {
     private SmartImageView bg;
     private SmartImageView bgs;
     private Handler handler;
+    private static final int SUCCESS = 1;
+    private static final int ERROR = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "83e23941491c7cce0cda92a4fdfe54c8");
         setContentView(R.layout.activity_mains);
-        bgs = (SmartImageView) findViewById(R.id.main_bgs);
 //        StatusBarCompat.setStatusBarColor(this, color, lightStatusBar)
 //        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorAccent));
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
+        get_bgs();
         initView();
         initData();
-        get_bgs();
-        handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(@NonNull Message msg) {
-                if(msg.what == 100)
-                {
-                    String url = (String)msg.obj;
-                    bgs.setImageUrl(url);
-                }
-                return true;
-            }
-        });
-
-
+//        handler = new Handler(new Handler.Callback() {
+//            @Override
+//            public boolean handleMessage(@NonNull Message msg) {
+//                if(msg.what == SUCCESS)
+//                {
+//                    String url = (String) msg.obj;
+//                    bgs.setImageUrl(url);
+//                }
+//                else {
+//                    bgs.setImageResource(R.mipmap.bgs);
+//                }
+//                return true;
+//            }
+//        });
 
 //        delete();
 //        create();
@@ -82,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void initView() { // 一个用来注册的方法（查找）
         btn_registers = findViewById(R.id.btn_register);
+        bgs = (SmartImageView) findViewById(R.id.main_bgs);
     }
 
     protected void initData() {
@@ -129,27 +138,52 @@ public class MainActivity extends AppCompatActivity {
     
     private void get_bgs()
     {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("https://xiaojieapi.com/api/v1/get/greet").get().build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback(){
+//        OkHttpClient client = new OkHttpClient();
+//        Request request = new Request.Builder().url("https://xiaojieapi.com/api/v1/get/greet").get().build();
+//        Call call = client.newCall(request);
+//        call.enqueue(new Callback(){
+//
+//            @Override
+//            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                try {
+//                    JSONObject jsonobject = new JSONObject(response.body().string());
+//                    Message message = new Message();
+//                    message.what = SUCCESS;
+//                    message.obj = jsonobject.optString("url");
+//                    handler.sendMessage(message);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                Message message = new Message();
+//                message.what = ERROR;
+//                handler.sendMessage(message);
+//            }
+//        });
 
+        String sql = "select * from background";
+        BmobQuery<background> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<background>() {
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                try {
-                    JSONObject jsonobject = new JSONObject(response.body().string());
-                    Message message = new Message();
-                    message.what = 100;
-                    message.obj = jsonobject.optString("url");
-                    handler.sendMessage(message);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void done(BmobQueryResult<background> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<background> list = (List<background>) bmobQueryResult.getResults();
+                    bgs.setImageUrl(list.get(0).getUrl());
+//                    Message message = new Message();
+//                    message.what = SUCCESS;
+//                    message.obj = list.get(0).getUrl();
+//                    handler.sendMessage(message);
+
+                } else {
+                    bgs.setImageResource(R.mipmap.bgs);
+//                    Message message = new Message();
+//                    message.what = ERROR;
+//                    handler.sendMessage(message);
                 }
-            }
-
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                bgs.setImageResource(R.mipmap.bgs);
             }
         });
     }
@@ -203,41 +237,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     texts.setText("请求失败");
                 }
-            }
-        });
-    }
-    public void getbg(String url) {
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url).get().build();
-        Call call = client.newCall(request);
-        // 创建call对象，这个Call是用来执行request请求的，就是说我们创建了一个请求，但是执行使用的是call，有同步请求和异步请求
-//        try {
-//            Response response = call.execute();
-//            try {
-//                JSONObject jsonobject = new JSONObject(response.body().string());
-//                bg.setImageUrl(jsonobject.optString("imgurl"));
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        call.enqueue(new Callback() {
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    JSONObject jsonobject = null;
-                    try {
-                        jsonobject = new JSONObject(response.body().string());
-                        Log.d("aa",jsonobject.optString("imgurl"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d("异常", "请求失败，可能是服务器不存在");
             }
         });
     }

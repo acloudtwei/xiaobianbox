@@ -46,14 +46,50 @@
     <!--    在Android开发中，大部分控件都有visibility这个属性，其属性有3个分别为“visible ”、“invisible”、“gone”。-->
     <!--    主要用来设置控制控件的显示和隐藏。有些人可能会疑惑Invisible和gone是有什么区别的？？？那么，我们带着这个疑问看下面：-->
 
+<!--最终功能确立-->
+<!--    https://www.juhe.cn/docs/api/id/73
+https://tenapi.cn/wether/?city=北京  天气预报-->
+<!-- https://xiaojieapi.com/2021/03/20/58B39.html 60s读世界-->
+<!--  https://docs.tenapi.cn/qrcode.html#%E8%B0%83%E7%94%A8%E6%95%88%E6%9E%9C
+  https://api.tx7.co/api/QRcode/QRcode.php
+  https://www.juhe.cn/docs/api/id/296 二维码生成-->
+<!--  https://api.tx7.co/api/epidemic/epidemic.php 新馆肺炎查询  -->
+<!--    https://xiaojieapi.com/api/v1/get/joke 笑话一下啊-->
 
+
+<!--    MAX-->
+    <!--  https://docs.tenapi.cn/video.html#%E8%AF%B7%E6%B1%82url
+  https://tenapi.cn/douyin/?url=https://v.douyin.com/m2mun2
+  抖音/各大视频去水印-->
+<!--    热搜榜（多个）https://api.tx7.co/api/JinRiHotsearch/JinRiHotsearch.php-->
+
+
+<!-- other-->
+<!--    webview解决内置的浏览 https://www.jianshu.com/p/e8eeec4e8d71-->
+<!--    https://www.runoob.com/w3cnote/android-tutorial-webview.html-->
+<!--    取色器 https://blog.csdn.net/SXW1900/article/details/92570568-->
+
+
+<!--替代品-->
+
+<!--    https://api.uomg.com/doc-qrcode.html 二维码-->
+<!--    https://api.uomg.com/doc-login.qq.html QQ登陆 post-->
+<!--    https://api.uomg.com/api/visitor.info?skey=774740085 获取ip-->
+<!--    https://api.uomg.com/api/rand.qinghua?format=json 随机一言-->
+<!--    https://api.wrdan.com/douyin url=https://www.douyin.com/video/6973991983329168644?previous_page=main_page 抖音post-->
+<!--    -->
+
+
+
+
+    <!--    头条新闻  https://www.juhe.cn/docs/api/id/235 -->
     <!--    http://ai.kenaisq.top/API/tiangou.php 天狗日记-->
     <!--    http://ai.kenaisq.top/API/xh.php 笑话-->
-    <!--    https://tenapi.cn/video/?url=http://service.picasso.adesk.com/v1/lightwp/category 抖音解析-->
+    <!--    https://tenapi.cn/douyin/?url=https://v.douyin.com/m2mun2 抖音解析-->
     <!--    http://service.picasso.adesk.com/v1/lightwp/category 图片大全-->
     <!--    https://v1.jinrishici.com/all.txt 随机一言-->
     <!--    https://q1.qlogo.cn/headimg_dl?dst_uin=1559295172&spec=100 获取qq头像-->
-    <!--    http://api.suolink.cn/api.htm?url=https://www.chinairn.com/hyzx/20210209/144031710.shtml&key=5ef9aa3c3a005a7ad3a71834@80d744dc0f961dc6d734ab07b23022b1-->
+    <!--    http://api.suolink.cn/api.htm?url=https://www.chinairn.com/-->
     <!--    生成短链接-->
     <!--    https://xiaojieapi.com/2021/05/16/491DA.html 笑话接口-->
     <!--    https://xiaojieapi.com/2021/04/17/B6B35.html 保安日记-->

@@ -6,11 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.one.MainActivity;
 import com.example.one.R;
-import com.example.one.person;
 import com.example.one.util.StringUtils;
 import com.githang.statusbar.StatusBarCompat;
 
@@ -21,7 +19,6 @@ import cn.bmob.v3.BmobUser;
 
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.http.I;
 import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.SaveListener;
 

@@ -19,6 +19,11 @@
     <dimen name="dimen_278dp">278dp</dimen>
     <dimen name="dimen_329dp">329dp</dimen>
 
+    // all button
+
+    <dimen name="button_width">85dp</dimen>
+    <dimen name="button_height">45dp</dimen>
+
     // sp
     <dimen name="dimen_18sp">18sp</dimen>
     <dimen name="dimen_20sp">20sp</dimen>

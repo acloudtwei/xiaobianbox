@@ -42,7 +42,8 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="输入" />
+        android:theme="@style/hint_style"
+        android:hint="请输入快递单号：" />
 
     <Button
         android:onClick="onclicks"
@@ -52,7 +53,6 @@
         tools:ignore="OnClick" />
 
 </LinearLayout>
-
 
 <LinearLayout
         android:id="@+id/express_main"
