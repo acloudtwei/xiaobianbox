@@ -102,12 +102,12 @@
 
             <biz.borealis.numberpicker.NumberPicker
                 android:id="@+id/num_choose1"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:np_max_number="100"
                 app:np_text_size_selected="10sp"
-                app:np_text_size="20sp"
+                app:np_text_size="23sp"
                 app:np_text_color_selected="#a4e9a2"
                 app:np_text_color="#38d9a9"/>
 
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 app:np_max_number="100"
                 app:np_text_size_selected="10sp"
-                app:np_text_size="20sp"
+                app:np_text_size="23sp"
                 app:np_text_color_selected="#a4e9a2"
                 app:np_text_color="#38d9a9"/>
 

@@ -74,7 +74,8 @@ https://tenapi.cn/wether/?city=北京  天气预报-->
 
 <!--    https://api.uomg.com/doc-qrcode.html 二维码-->
 <!--    https://api.uomg.com/doc-login.qq.html QQ登陆 post-->
-<!--    https://api.uomg.com/api/visitor.info?skey=774740085 获取ip-->
+    <!--    https://api.uomg.com/api/visitor.info?skey=774740085 获取ip-->
+<!-- https://www.douyacun.com/api/openapi/geo/location?ip=178.252.91.188&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY-->
 <!--    https://api.uomg.com/api/rand.qinghua?format=json 随机一言-->
 <!--    https://api.wrdan.com/douyin url=https://www.douyin.com/video/6973991983329168644?previous_page=main_page 抖音post-->
 <!--    -->
