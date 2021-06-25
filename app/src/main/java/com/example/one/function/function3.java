@@ -206,7 +206,7 @@ public class function3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = qcode_text.getText().toString().trim();
-                String url = "https://api.itwei.top/get_qcode.php?text="+text+"$bgcolor="+function3_bean.getBgcolor() +
+                String url = "https://api.itwei.top/get_qcode.php?text="+text+"&bgcolor="+function3_bean.getBgcolor() +
                         "&fgcolor="+function3_bean.getFgcolor()+"&w="+function3_bean.getW()+"&m="+function3_bean.getM();
 
                 OkHttpClient client = new OkHttpClient();
@@ -224,18 +224,17 @@ public class function3 extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(function3.this,url,Toast.LENGTH_LONG).show();
-                                try {
-                                    JSONObject jsonobject = new JSONObject(responseString);
-                                    if(jsonobject.optString("code").equals("1"))
-                                    {
-                                        //qcode_text.setText(jsonobject.optString("url"));
-                                        ImageZoom.show(function3.this,jsonobject.optString("url"));
-                                        Toast.makeText(function3.this,jsonobject.optString("url"),Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
+                        try {
+                            JSONObject jsonobject = new JSONObject(responseString);
+                            if(jsonobject.optString("code").equals("1"))
+                            {
+//                                function3_bean.setImgurl(jsonobject.optString("url"));
+                                ImageZoom.show(function3.this,jsonobject.optString("url"));
+//                                Toast.makeText(function3.this,jsonobject.optString("url"),Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                             }
                         });
                     }

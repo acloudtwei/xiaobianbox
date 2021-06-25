@@ -30,16 +30,23 @@
 
     </LinearLayout>
 
-<EditText
-    android:id="@+id/qcode_text"
+
+<LinearLayout
     android:layout_marginTop="100dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<EditText
+    android:id="@+id/qcode_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:hint="请输入二维码文本，如网址..."
+    android:lines="1"
     android:theme="@style/hint_style"/>
 
 <LinearLayout
-    android:layout_marginTop="200dp"
+    android:layout_marginTop="55dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -49,7 +56,7 @@
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:layout_marginStart="90dp"
-     android:text="选择前景色"
+     android:text="选择背景色"
      android:background="@drawable/color_picker1"
      android:textColor="@color/white" />
 
@@ -58,9 +65,12 @@
         android:layout_marginLeft="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="选择后景色"
+        android:text="选择二维码颜色"
         android:background="@drawable/color_picker1"
         android:textColor="@color/white"/>
+
+</LinearLayout>
+
 
 </LinearLayout>
 

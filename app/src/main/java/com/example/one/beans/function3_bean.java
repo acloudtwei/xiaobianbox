@@ -6,6 +6,7 @@ public class function3_bean {
     private String fgcolor;
     private String w;
     private String m;
+    private String imgurl;
 
     public String getBgcolor() {
         return bgcolor;
@@ -38,4 +39,13 @@ public class function3_bean {
     public void setW(String w) {
         this.w = w;
     }
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
+
 }
