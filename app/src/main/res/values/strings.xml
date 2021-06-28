@@ -46,41 +46,39 @@
     <!--    在Android开发中，大部分控件都有visibility这个属性，其属性有3个分别为“visible ”、“invisible”、“gone”。-->
     <!--    主要用来设置控制控件的显示和隐藏。有些人可能会疑惑Invisible和gone是有什么区别的？？？那么，我们带着这个疑问看下面：-->
 
-<!--最终功能确立-->
-<!--    https://www.juhe.cn/docs/api/id/73
+    <!--最终功能确立-->
+    <!--    https://www.juhe.cn/docs/api/id/73
 https://tenapi.cn/wether/?city=北京  天气预报-->
-<!-- https://xiaojieapi.com/2021/03/20/58B39.html 60s读世界-->
-<!--  https://docs.tenapi.cn/qrcode.html#%E8%B0%83%E7%94%A8%E6%95%88%E6%9E%9C
+    <!-- https://xiaojieapi.com/2021/03/20/58B39.html 60s读世界-->
+    <!--  https://docs.tenapi.cn/qrcode.html#%E8%B0%83%E7%94%A8%E6%95%88%E6%9E%9C
   https://api.tx7.co/api/QRcode/QRcode.php
   https://www.juhe.cn/docs/api/id/296 二维码生成-->
-<!--  https://api.tx7.co/api/epidemic/epidemic.php 新馆肺炎查询  -->
-<!--    https://xiaojieapi.com/api/v1/get/joke 笑话一下啊-->
+    <!--  https://api.tx7.co/api/epidemic/epidemic.php 新馆肺炎查询  -->
+    <!--    https://xiaojieapi.com/api/v1/get/joke 笑话一下啊-->
 
 
-<!--    MAX-->
+    <!--    MAX-->
     <!--  https://docs.tenapi.cn/video.html#%E8%AF%B7%E6%B1%82url
   https://tenapi.cn/douyin/?url=https://v.douyin.com/m2mun2
   抖音/各大视频去水印-->
-<!--    热搜榜（多个）https://api.tx7.co/api/JinRiHotsearch/JinRiHotsearch.php-->
+    <!--    热搜榜（多个）https://api.tx7.co/api/JinRiHotsearch/JinRiHotsearch.php-->
 
 
-<!-- other-->
-<!--    webview解决内置的浏览 https://www.jianshu.com/p/e8eeec4e8d71-->
-<!--    https://www.runoob.com/w3cnote/android-tutorial-webview.html-->
-<!--    取色器 https://blog.csdn.net/SXW1900/article/details/92570568-->
+    <!-- other-->
+    <!--    webview解决内置的浏览 https://www.jianshu.com/p/e8eeec4e8d71-->
+    <!--    https://www.runoob.com/w3cnote/android-tutorial-webview.html-->
+    <!--    取色器 https://blog.csdn.net/SXW1900/article/details/92570568-->
 
 
-<!--替代品-->
+    <!--替代品-->
 
-<!--    https://api.uomg.com/doc-qrcode.html 二维码-->
-<!--    https://api.uomg.com/doc-login.qq.html QQ登陆 post-->
+    <!--    https://api.uomg.com/doc-qrcode.html 二维码-->
+    <!--    https://api.uomg.com/doc-login.qq.html QQ登陆 post-->
     <!--    https://api.uomg.com/api/visitor.info?skey=774740085 获取ip-->
-<!-- https://www.douyacun.com/api/openapi/geo/location?ip=178.252.91.188&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY-->
-<!--    https://api.uomg.com/api/rand.qinghua?format=json 随机一言-->
-<!--    https://api.wrdan.com/douyin url=https://www.douyin.com/video/6973991983329168644?previous_page=main_page 抖音post-->
-<!--    -->
-
-
+    <!-- https://www.douyacun.com/api/openapi/geo/location?ip=178.252.91.188&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SWQiOiJlZWQ4ZmQ1ODBmYTRmNjkyIn0.d7qF_mjdXMC0R5M6f04Lnh6x61kaU4lqHT0Axt9xUOY-->
+    <!--    https://api.uomg.com/api/rand.qinghua?format=json 随机一言-->
+    <!--    https://api.wrdan.com/douyin url=https://www.douyin.com/video/6973991983329168644?previous_page=main_page 抖音post-->
+    <!--    -->
 
 
     <!--    头条新闻  https://www.juhe.cn/docs/api/id/235 -->

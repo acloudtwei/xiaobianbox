@@ -70,18 +70,6 @@ public class function3 extends AppCompatActivity {
         iniChoose1();
         iniChoose2();
         initData3();
-//        NumberPicker numberPicker = (NumberPicker) findViewById(R.id.ppcv);
-//        numberPicker.setOnValueChangeListener(new OnValueChangeListener() {
-//            @Override
-//            public void onValueChanged(int newValue) {
-//                Toast.makeText(function3.this,"ok"+newValue,Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
-//取色器的监听器
-
-
 //        ColorPickerDialogBuilder
 //                .with(this)
 //                .setTitle("Choose color")
@@ -106,8 +94,6 @@ public class function3 extends AppCompatActivity {
 //                })
 //                .build()
 //                .show();
-
-
     }
 
     private void initData1()
@@ -266,44 +252,6 @@ public class function3 extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    private void cpdd()
-//    {
-//        String sql = "select * from background";
-//        BmobQuery<background> bmobQuery = new BmobQuery<>();
-//        bmobQuery.setSQL(sql);
-//        bmobQuery.doSQLQuery(new SQLQueryListener<background>() {
-//            @Override
-//            public void done(BmobQueryResult<background> bmobQueryResult, BmobException e) {
-//                if (e == null) {
-//                    List<background> list = (List<background>) bmobQueryResult.getResults();
-//                    aa.setText(list.get(0).getUrl());
-////                    Message message = new Message();
-////                    message.what = SUCCESS;
-////                    message.obj = list;
-////                    handler.sendMessage(message);
-//
-//                } else {
-//                    aa.setText("error");
-////                    Message message = new Message();
-////                    message.what = ERROR;
-////                    handler.sendMessage(message);
-//                }
-//            }
-//        });
-//    }
 
     private void init()
     {

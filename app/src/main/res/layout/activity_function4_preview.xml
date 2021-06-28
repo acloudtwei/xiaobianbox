@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bt_register_begin"
+    tools:context=".activity.function4_preview">
+
+    <TextView
+        android:id="@+id/function4_preview_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="海报预览图"
+        android:textSize="@dimen/dimen_20sp"
+        android:gravity="center"
+        android:background="@color/top_color" />
+
+    <ImageView
+        android:id="@+id/function4_preview_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/function4_preview_text"/>
+
+</RelativeLayout>
