@@ -17,11 +17,10 @@ import java.io.FileOutputStream;
 
 public class imagUtil {
 
-    public static final Bitmap drawableToBitmap2(Drawable drawable) {
-        BitmapDrawable bd = (BitmapDrawable) drawable;
-        return bd.getBitmap();
-    }
-
+//    public static final Bitmap drawableToBitmap2(Drawable drawable) {
+//        BitmapDrawable bd = (BitmapDrawable) drawable;
+//        return bd.getBitmap();
+//    }
     @RequiresApi(api = Build.VERSION_CODES.N)
 
     public static void saveImageToGallery(Context context, Bitmap bmp) {

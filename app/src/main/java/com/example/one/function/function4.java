@@ -17,12 +17,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.one.R;
+import com.example.one.activity.function4_preview;
+import com.example.one.util.StringUtils;
 import com.example.one.util.imagUtil;
 import com.example.one.activity.functionactivity;
 import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
-
+import com.example.one.Request.*;
 import android.graphics.Bitmap;
 
 import android.widget.ImageView;
@@ -37,7 +39,8 @@ public class function4 extends AppCompatActivity {
     private EditText f4_fours;
     private EditText f4_fives;
     private EditText f4_sixs;
-    final String[] items = new String[]{"选项1", "选项2", "选项3"};
+    private String api="ERROR";
+    final String[] items = new String[]{"二次元接口1", "二次元接口2", "必应风景图"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,8 @@ public class function4 extends AppCompatActivity {
         textcolor();
         initData();
         initButton1();
-
+        initButton2();
+        initButton3();
 
 //        ImageView imageView = (ImageView) findViewById(R.id.imageView);
 //        Bitmap bitmap = imagUtil.drawableToBitmap2(imageView.getBackground());
@@ -59,7 +63,20 @@ public class function4 extends AppCompatActivity {
 //                return true;
 //            }
 //        });
+
     }
+
+private String geturl()
+{
+    return "https://tenapi.cn/poster/?qrcode="+
+            f4_ones.getText().toString().trim()+"&title="
+            +f4_twos.getText().toString().trim()+"&content="+
+            f4_threes.getText().toString().trim()+
+            "&site="+f4_fours.getText().toString().trim()+
+            "&info="+f4_fives.getText().toString().trim()+"&author="
+            +f4_sixs.getText().toString().trim()+"&pic=";
+}
+
 
 
 private void initButton1()
@@ -72,7 +89,21 @@ private void initButton1()
                     .addItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            switch (which){
+                                case 0:
+                                    api = "https://api.ixiaowai.cn/api/api.php?return=json";
+                                    break;
+                                case 1:
+                                    api = "https://acg.toubiec.cn/random.php?ret=json";
+                                    break;
+                                case 2:
+                                    api = "https://tenapi.cn/bing/";
+                                    break;
+                                default:
+                                    api = "ERROR";
+                            }
                             Toast.makeText(function4.this, "你选择了 " + items[which], Toast.LENGTH_SHORT).show();
+                            f4_button1.setText(items[which]);
                             dialog.dismiss();
                         }
                     })
@@ -80,6 +111,62 @@ private void initButton1()
         }
     });
 }
+
+private void initButton2()
+{
+    Button button2 = (Button) findViewById(R.id.button2);
+    button2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (StringUtils.isEmpty(f4_ones.getText().toString().trim())) {
+                Toast.makeText(function4.this,"请输入二维码内容",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (StringUtils.isEmpty(f4_twos.getText().toString().trim())) {
+                Toast.makeText(function4.this,"请输入标题",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (StringUtils.isEmpty(f4_threes.getText().toString().trim())) {
+                Toast.makeText(function4.this,"请输入内容",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (StringUtils.isEmpty(f4_fours.getText().toString().trim())) {
+                Toast.makeText(function4.this,"请输入网站标题",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (StringUtils.isEmpty(f4_fives.getText().toString().trim())) {
+                Toast.makeText(function4.this,"请输入网站描述",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (StringUtils.isEmpty(f4_sixs.getText().toString().trim())) {
+                Toast.makeText(function4.this,"请输入作者名称",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (api.equals("ERROR")) {
+                Toast.makeText(function4.this,"请选择海报封面接口",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Intent intent = new Intent(function4.this, function4_preview.class);
+            intent.putExtra("url", geturl());
+            intent.putExtra("api", api);
+            startActivity(intent);
+        }
+    });
+}
+
+private void initButton3()
+{
+    Button button3 = (Button) findViewById(R.id.button3);
+    button3.setOnClickListener(new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        public void onClick(View v) {
+            imagUtil.saveImageToGallery(function4.this,request1.img_bitmap());
+
+        }
+    });
+ }
+
 private void initData()
 {
     f4_ones = (EditText) findViewById(R.id.f4_ones);
@@ -88,7 +175,6 @@ private void initData()
     f4_fours = (EditText) findViewById(R.id.f4_fours);
     f4_fives = (EditText) findViewById(R.id.f4_fives);
     f4_sixs = (EditText) findViewById(R.id.f4_sixs);
-
 }
 
 

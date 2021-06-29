@@ -51,13 +51,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="@dimen/dimen_18sp"
-        android:text="变体："/>
+        android:text="二维码内容："/>
 
     <EditText
         android:id="@+id/f4_ones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/hint_style"
+        android:lines="1"
         android:hint="请输入编译"/>
 
 </LinearLayout>
@@ -75,13 +76,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="@dimen/dimen_18sp"
-            android:text="变体："/>
+            android:text="标题："/>
 
         <EditText
             android:id="@+id/f4_twos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:lines="1"
             android:hint="请输入编译"/>
 
     </LinearLayout>
@@ -99,13 +101,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="@dimen/dimen_18sp"
-            android:text="变体："/>
+            android:text="内容："/>
 
         <EditText
             android:id="@+id/f4_threes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:lines="1"
             android:hint="请输入编译"/>
 
     </LinearLayout>
@@ -123,13 +126,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="@dimen/dimen_18sp"
-            android:text="变体："/>
+            android:text="网站标题："/>
 
         <EditText
             android:id="@+id/f4_fours"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:lines="1"
             android:hint="请输入编译"/>
 
     </LinearLayout>
@@ -147,13 +151,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="@dimen/dimen_18sp"
-            android:text="变体："/>
+            android:text="网站描述："/>
 
         <EditText
             android:id="@+id/f4_fives"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:lines="1"
             android:hint="请输入编译"/>
 
     </LinearLayout>
@@ -171,13 +176,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="@dimen/dimen_18sp"
-            android:text="变体："/>
+            android:text="作者名称："/>
 
         <EditText
             android:id="@+id/f4_sixs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:lines="1"
             android:hint="请输入编译"/>
 
     </LinearLayout>

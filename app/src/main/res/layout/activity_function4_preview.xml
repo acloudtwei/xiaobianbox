@@ -16,7 +16,7 @@
         android:gravity="center"
         android:background="@color/top_color" />
 
-    <ImageView
+    <com.loopj.android.image.SmartImageView
         android:id="@+id/function4_preview_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

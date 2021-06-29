@@ -178,16 +178,6 @@ public class function3 extends AppCompatActivity {
 
     private void initData3()
     {
-//        final String[] urls = new String[] {
-//                "https://xiaojieapi.com/api/v3/get/picture?token=c1d5c801320489e792112c461819fe3b&suffix=jpg&type=jpg",
-//                "https://xiaojieapi.com/api/v3/get/picture?token=b05a7512d42fc3484e4cf3cfaf1cd11b&suffix=jpg&type=jpg",
-//        };
-//
-//        //添加list数据
-//        final List<String> list = new ArrayList<>();
-//        for (int i = 0; i < urls.length; i++) {
-//            list.add(urls[i]);
-//        }
         qcode_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
