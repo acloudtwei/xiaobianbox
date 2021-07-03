@@ -19,7 +19,6 @@ import com.loopj.android.image.SmartImageView;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
@@ -36,13 +35,13 @@ public class request1 {
     private static final int SUCCESS = 1;
     private static final int ERROR = 0;
     private static Handler handler;
-    private static Bitmap bitmap;
+    private static Bitmap bitmap = null;
     private static String bg_url="https://tva1.sinaimg.cn/large/0072Vf1pgy1fodqncwm01j31hc10xb29.jpg"; //ERROR象征
 
-    public static void getphoto(SmartImageView img,String url,String api)
+    public static void getphoto(SmartImageView img,String url,String api,String type)
     {
         String urls;
-        if(api.equals("https://tenapi.cn/bing/"))
+        if(type.equals("bing"))
         {
             urls = url + api;
         }else
@@ -87,7 +86,7 @@ public class request1 {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 if (response.isSuccessful()) {
                     try {
-                        JSONObject jsonobject = new JSONObject(response.body().string());
+                        JSONObject jsonobject = new JSONObject(Objects.requireNonNull(response.body()).string());
                         bg_url = jsonobject.optString("imgurl");
                     } catch (JSONException e) {
                         e.printStackTrace();

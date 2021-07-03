@@ -27,7 +27,8 @@ public class function4_preview extends AppCompatActivity {
         Intent intent =getIntent();
         String url = intent.getStringExtra("url");
         String api = intent.getStringExtra("api");
-        request1.getphoto(img,url,api);
+        String type = intent.getStringExtra("type");
+        request1.getphoto(img,url,api,type);
     }
 
     private void textcolor()

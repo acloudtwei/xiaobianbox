@@ -121,7 +121,7 @@ public class login_activity extends BaseActivity {
             }
         }, 3000);
     }
-    public void query() { //查询
+    private void query() { //查询
         String sql = "select * from BmobUser";
         BmobQuery<BmobUser> bmobQuery = new BmobQuery<>();
         bmobQuery.setSQL(sql);

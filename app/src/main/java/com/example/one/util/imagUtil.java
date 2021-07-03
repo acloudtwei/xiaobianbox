@@ -34,7 +34,7 @@ public class imagUtil {
         }
 
         //图片文件名称
-        String fileName = "poster_"+System.currentTimeMillis() + ".jpg";
+        String fileName = "picture_"+System.currentTimeMillis() + ".jpg";
         // 这个字符串变量的作用主要是用来为照片进行命名，命名方式为acloudtwei+当前时间+图片格式，这个格式默认的png格式
         // 这个System.currentTimeMillis()作用是获取当前系统的时间，使用的是时间戳
         File file = new File(appDir, fileName); // 创建一个保存文件的对象

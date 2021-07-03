@@ -59,7 +59,8 @@
         android:layout_height="wrap_content"
         android:theme="@style/hint_style"
         android:lines="1"
-        android:hint="请输入编译"/>
+        android:textColor="#495057"
+        android:hint="请输入二维码内容"/>
 
 </LinearLayout>
 
@@ -83,8 +84,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:textColor="#495057"
             android:lines="1"
-            android:hint="请输入编译"/>
+            android:hint="请输入标题"/>
 
     </LinearLayout>
 
@@ -108,8 +110,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:textColor="#495057"
             android:lines="1"
-            android:hint="请输入编译"/>
+            android:hint="请输入内容"/>
 
     </LinearLayout>
 
@@ -133,8 +136,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:textColor="#495057"
             android:lines="1"
-            android:hint="请输入编译"/>
+            android:hint="请输入网站标题"/>
 
     </LinearLayout>
 
@@ -158,8 +162,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:textColor="#495057"
             android:lines="1"
-            android:hint="请输入编译"/>
+            android:hint="请输入网站描述"/>
 
     </LinearLayout>
 
@@ -183,8 +188,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/hint_style"
+            android:textColor="#495057"
             android:lines="1"
-            android:hint="请输入编译"/>
+            android:hint="请输入作者名称"/>
 
     </LinearLayout>
 

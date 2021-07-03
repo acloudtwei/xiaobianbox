@@ -2,7 +2,6 @@ package com.example.one;
 
 import android.util.Log;
 
-import java.util.Arrays;
 import java.util.List;
 import com.example.one.sql.*;
 import cn.bmob.v3.BmobQuery;
@@ -64,19 +63,20 @@ public class database {
         });
     }
 
-//    private void deleteObject() {
-//        person p2 = new person();
-//        p2.removeAll("cards", Arrays.asList(new BankCard("建行", "111")));
-//        p2.setObjectId(objectId);
-//        p2.update(new UpdateListener() {
-//            @Override
-//            public void done(BmobException e) {
-//                if(e==null){
-//                    ("删除成功");
-//                }else{
-//                    loge(e);
-//                }
-//            }
-//        });
-//    }
+    private void get_count() { //查询数据库，获取的数据存在数组里面
+        List<picture_api> list;
+        String sql = "select count(*) from picture_api";
+        BmobQuery<picture_api> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<picture_api>() {
+            @Override
+            public void done(BmobQueryResult<picture_api> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<picture_api> list = (List<picture_api>) bmobQueryResult.getResults();
+                    list.size();
+                }
+            }
+        });
+    }
+
 }

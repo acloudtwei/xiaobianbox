@@ -2,16 +2,20 @@ package com.example.one.function;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.one.activity.function5_preview;
 import com.example.one.beans.*;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Looper;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,15 +23,12 @@ import com.dingmouren.colorpicker.ColorPickerDialog;
 import com.dingmouren.colorpicker.OnColorPickerListener;
 import com.example.one.R;
 import com.example.one.activity.functionactivity;
-import com.example.one.sql.background;
-import com.example.one.sql.person;
 import com.example.one.textcolor.textcolor1;
 
 import com.githang.statusbar.StatusBarCompat;
-import com.liji.imagezoom.util.ImageUrlType;
-import com.liji.imagezoom.util.ImageZoom;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,10 +38,6 @@ import java.util.List;
 
 import biz.borealis.numberpicker.NumberPicker;
 import biz.borealis.numberpicker.OnValueChangeListener;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobQueryResult;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SQLQueryListener;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -49,220 +46,145 @@ import okhttp3.Response;
 
 public class function3 extends AppCompatActivity {
 
-    private EditText qcode_text;
-    private TextView size2;
-    private TextView margin2;
-    private Button color_choose1;
-    private Button color_choose2;
-    private Button qcode_create;
-    private NumberPicker num_choose1;
-    private NumberPicker num_choose2;
-    function3_bean function3_bean = new function3_bean();
+    private EditText weather_id;
+    private TextView weather_city;
+    private TextView weather_info;
+    private TextView weather_aqi;
+    private TextView weather_temperature;
+    private TextView weather_direct;
+    private TextView weather_humidity;
+    private TextView weather_power;
+    private LinearLayout weather_realtime;
+    protected List<String> dates = new ArrayList<>();
+    protected List<String> directs = new ArrayList<>();
+    protected List<String> temperatures = new ArrayList<>();
+    protected List<String> weathers = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_function3);
-        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
+        StatusBarCompat.setStatusBarColor(this, getResources().getColor(R.color.top_color), false);
         init();
         textcolor();
-        initData1();
-        initData2();
-        iniChoose1();
-        iniChoose2();
-        initData3();
-//        ColorPickerDialogBuilder
-//                .with(this)
-//                .setTitle("Choose color")
-//                .wheelType(ColorPickerView.WHEEL_TYPE.FLOWER)
-//                .density(12)
-//                .setOnColorSelectedListener(new OnColorSelectedListener() {
-//                    @Override
-//                    public void onColorSelected(int selectedColor) {
-//                            Log.d("aaa","onColorSelected: 0x" + Integer.toHexString(selectedColor));
-//                    }
-//                })
-//                .setPositiveButton("确认", new ColorPickerClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-//                        Log.d("color", ""+Integer.toHexString(selectedColor));
-//                    }
-//                })
-//                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                    }
-//                })
-//                .build()
-//                .show();
     }
 
-    private void initData1()
-    {
-        color_choose1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean supportAlpha = true;//是否支持透明度
-                /*
-                 * 创建支持透明度的取色器
-                 * @param context 宿主Activity
-                 * @param defauleColor 默认的颜色
-                 * @param isSupportAlpha 颜色是否支持透明度
-                 * @param listener 取色器的监听器
-                 */
-                OnColorPickerListener mOnColorPickerListener = new OnColorPickerListener() {
-                    @Override
-                    public void onColorCancel(ColorPickerDialog dialog) {//取消选择的颜色
-
-                    }
-                    @Override
-                    public void onColorChange(ColorPickerDialog dialog, int color) {//实时监听颜色变化
-
-                    }
-                    @Override
-                    public void onColorConfirm(ColorPickerDialog dialog, int color) {//确定的颜色
-                        function3_bean.setBgcolor("%23"+Integer.toHexString(color).substring(2));
-                        color_choose1.setBackgroundColor(color);
-                        color_choose1.setText("#"+Integer.toHexString(color).substring(2));
-                        //Toast.makeText(function3.this,"#"+Integer.toHexString(color),Toast.LENGTH_SHORT).show();
-                    }
-                };
-                ColorPickerDialog mColorPickerDialog = new ColorPickerDialog(
-                        function3.this,
-                        getResources().getColor(R.color.top_color),
-                        supportAlpha,
-                        mOnColorPickerListener
-                ).show();
-            }
-        });
-    }
-
-    private void initData2()
-    {
-        color_choose2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean supportAlpha = true;//是否支持透明度
-                /*
-                 * 创建支持透明度的取色器
-                 * @param context 宿主Activity
-                 * @param defauleColor 默认的颜色
-                 * @param isSupportAlpha 颜色是否支持透明度
-                 * @param listener 取色器的监听器
-                 */
-                OnColorPickerListener mOnColorPickerListener = new OnColorPickerListener() {
-                    @Override
-                    public void onColorCancel(ColorPickerDialog dialog) {//取消选择的颜色
-
-                    }
-                    @Override
-                    public void onColorChange(ColorPickerDialog dialog, int color) {//实时监听颜色变化
-
-                    }
-                    @Override
-                    public void onColorConfirm(ColorPickerDialog dialog, int color) {//确定的颜色
-                        color_choose2.setBackgroundColor(color);
-                        color_choose2.setText("#"+Integer.toHexString(color).substring(2));
-                        function3_bean.setFgcolor("%23"+Integer.toHexString(color).substring(2));
-                        //Toast.makeText(function3.this,"#"+Integer.toHexString(color),Toast.LENGTH_SHORT).show();
-                    }
-                };
-                ColorPickerDialog mColorPickerDialog = new ColorPickerDialog(
-                        function3.this,
-                        getResources().getColor(R.color.top_color),
-                        supportAlpha,
-                        mOnColorPickerListener
-                ).show();
-            }
-        });
-    }
-
-    private void initData3()
-    {
-        qcode_create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text = qcode_text.getText().toString().trim();
-                String url = "https://api.itwei.top/get_qcode.php?text="+text+"&bgcolor="+function3_bean.getBgcolor() +
-                        "&fgcolor="+function3_bean.getFgcolor()+"&w="+function3_bean.getW()+"&m="+function3_bean.getM();
-
-                OkHttpClient client = new OkHttpClient();
-                Request request = new Request.Builder().url(url).get().build();
-                Call call = client.newCall(request);
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        ImageZoom.show(function3.this,"https://tva4.sinaimg.cn//large//0072Vf1pgy1foxlncsm2pj31hc0u0arz.jpg");
-                    }
-
-                    @Override
-                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                        final String responseString = response.body().string();
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                        try {
-                            JSONObject jsonobject = new JSONObject(responseString);
-                            if(jsonobject.optString("code").equals("1"))
-                            {
-//                                function3_bean.setImgurl(jsonobject.optString("url"));
-                                ImageZoom.show(function3.this,jsonobject.optString("url"));
-//                                Toast.makeText(function3.this,jsonobject.optString("url"),Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                            }
-                        });
-                    }
-                });
-            }
-        });
-    }
-
-    private void iniChoose1()
-    {
-        num_choose1.setOnValueChangeListener(new OnValueChangeListener() {
-            @Override
-            public void onValueChanged(int newValue) {
-                size2.setText(String.valueOf(newValue));
-                function3_bean.setW(String.valueOf(newValue));
-                //Toast.makeText(function3.this,"ok"+newValue,Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void iniChoose2()
-    {
-        num_choose2.setOnValueChangeListener(new OnValueChangeListener() {
-            @Override
-            public void onValueChanged(int newValue) {
-                margin2.setText(String.valueOf(newValue));
-                function3_bean.setM(String.valueOf(newValue));
-                //Toast.makeText(function3.this,"ok"+newValue,Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void init()
     {
-        qcode_text = (EditText) findViewById(R.id.qcode_text);
-        size2 = (TextView) findViewById(R.id.size2);
-        margin2 = (TextView) findViewById(R.id.margin2);
-        color_choose1 = (Button) findViewById(R.id.color_choose1);
-        color_choose2 = (Button) findViewById(R.id.color_choose2);
-        qcode_create = (Button) findViewById(R.id.qcode_create);
-        num_choose1 = (NumberPicker) findViewById(R.id.num_choose1);
-        num_choose2 = (NumberPicker) findViewById(R.id.num_choose2);
+        weather_id = (EditText) findViewById(R.id.weather_id);
+        weather_city = (TextView) findViewById(R.id.weather_city);
+        weather_info = (TextView) findViewById(R.id.weather_info);
+        weather_aqi = (TextView) findViewById(R.id.weather_aqi);
+        weather_temperature = (TextView) findViewById(R.id.weather_temperature);
+        weather_direct = (TextView) findViewById(R.id.weather_direct);
+        weather_humidity = (TextView) findViewById(R.id.weather_humidity);
+        weather_power = (TextView) findViewById(R.id.weather_power);
+        weather_realtime = (LinearLayout) findViewById(R.id.weather_realtime);
     }
+
+    public void weather_onclik(View view)
+    {
+        String url = "https://apis.juhe.cn/simpleWeather/query?key=7a579ac2ff9b401f815fbe5fd543971c&city=" + weather_id.getText().toString().trim();
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).get().build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Looper.prepare();
+                Toast.makeText(function3.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                Looper.loop();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                final String responseString = response.body().string();
+                runOnUiThread(new Runnable() {
+                                  @Override
+                                  public void run() {
+                                      try {
+                                          JSONObject jsonobject = new JSONObject(responseString);
+                                          JSONObject jsonobject0 = new JSONObject(jsonobject.optString("result"));
+                                          JSONObject jsonobject1 = new JSONObject(jsonobject0.optString("realtime"));
+                                          weather_realtime.setVisibility(View.VISIBLE);
+                                          if(!jsonobject.optString("result").equals("null"))
+                                          {
+                                              weather_city.setText(jsonobject0.optString("city"));
+                                              weather_temperature.setText(jsonobject1.optString("temperature")+"℃");
+                                              weather_humidity.setText(jsonobject1.optString("humidity"));
+                                              weather_info.setText(jsonobject1.optString("info"));
+                                              weather_direct.setText(jsonobject1.optString("direct"));
+                                              weather_power.setText(jsonobject1.optString("power"));
+                                              weather_aqi.setText(jsonobject1.optString("aqi"));
+
+                                              JSONArray future_json = new JSONArray(jsonobject0.optString("future"));
+                                              for (int i = 0; i < future_json.length(); i++) {
+                                                  JSONObject jsonobjects = future_json.optJSONObject(i);
+                                                  dates.add(jsonobjects.optString("date"));
+                                                  temperatures.add(jsonobjects.optString("temperature"));
+                                                  weathers.add(jsonobjects.optString("weather"));
+                                                  directs.add(jsonobjects.optString("direct"));
+                                                  ListView mListView = (ListView) findViewById(R.id.weather_futuretime); // 这个是找到我们的listview标签
+                                                  function3.MyBaseAdapter mAdapter = new function3.MyBaseAdapter(); // 这个是创建一个适配器的对象（这个适配器是我们继承父类的子类）
+                                                  mListView.setAdapter(mAdapter); // 这个是将我们的这个listview的适配器设置为我们创建的这个适配器
+                                              }
+                                          }
+                                          else {
+                                              Toast.makeText(function3.this,"输入的城市有误或者城市不存在！",Toast.LENGTH_SHORT).show();
+                                          }
+                                      } catch (JSONException e) {
+                                          e.printStackTrace();
+                                      }
+                                  }}
+                );}
+        });
+    }
+
+    class MyBaseAdapter extends BaseAdapter { //getCount决定了listview一共有多少个item（数据项），而getView返回了每个item项所显示的view。
+        // 重写BaseAdapter要重写里面四个基本的方法，其中这四个方法都是有相应的返回值的
+        @Override
+        public int getCount() { // 这个函数是获取总共的要显示的数据数
+            return weathers.size(); }
+        @Override
+        public Object getItem(int position) // 获得相应数据集合中特定位置的数据项
+        {
+            return weathers.get(position);
+        }
+        @Override
+        public long getItemId(int position)
+        {
+            return position;
+        } // 返回该数据项对应的id
+        @Override
+        public View getView(int position, View convertView, ViewGroup parnet) // 返回每个item所显示的数据(view)
+        {
+            View view = View.inflate(function3.this,R.layout.function3_item,null);
+            // 创建一个view，通过inflate来找相应的显示规则xml布局，就是找到你在listview里面要显示的相应控件布局
+            TextView date = (TextView) view.findViewById(R.id.wdate);
+            TextView direct = (TextView) view.findViewById(R.id.wdirect);
+            TextView temperature = (TextView) view.findViewById(R.id.wtemperature);
+            TextView weather = (TextView) view.findViewById(R.id.wweather);
+            date.setText(dates.get(position));
+            direct.setText(directs.get(position));
+            temperature.setText(temperatures.get(position));
+            weather.setText(weathers.get(position));
+            date.setTextColor(Color.parseColor("#0c8599"));
+            return view;
+        }
+    }
+
     private void textcolor()
     {
         // 作用是修改字体的颜色
         TextView function1_text = (TextView) findViewById(R.id.function1_text);
-        TextView size1= (TextView) findViewById(R.id.size1);
-        TextView margin1= (TextView) findViewById(R.id.margin1);
+        TextView city_color = (TextView) findViewById(R.id.city_color);
+        TextView w1 = (TextView) findViewById(R.id.w1);
+        TextView w2 = (TextView) findViewById(R.id.w2);
         textcolor1.setTextViewStyles(function1_text);
-        textcolor1.setTextViewStyles(size1);
-        textcolor1.setTextViewStyles(margin1);
+        textcolor1.setTextViewStyles(city_color);
+        textcolor1.setTextViewStyles(w1);
+        textcolor1.setTextViewStyles(w2);
     }
 
     public void main_function(View view)

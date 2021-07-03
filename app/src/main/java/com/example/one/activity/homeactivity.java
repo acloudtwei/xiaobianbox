@@ -2,7 +2,9 @@ package com.example.one.activity;
 
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -21,12 +23,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.one.R;
 import com.githang.statusbar.StatusBarCompat;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -42,6 +48,14 @@ public class homeactivity extends AppCompatActivity {
     private TextView my;
     private TextView top2;
     private Handler handler;
+    private List<String> douyin_titles = new ArrayList<>();
+    private List<String> douyin_hots = new ArrayList<>();
+    private List<String> weibo_titles = new ArrayList<>();
+    private List<String> weibo_hots = new ArrayList<>();
+    private List<String> weibo_urls = new ArrayList<>();
+    private List<String> zhihu_titles = new ArrayList<>();
+    private List<String> zhihu_querys = new ArrayList<>();
+    private List<String> zhihu_urls = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +63,9 @@ public class homeactivity extends AppCompatActivity {
         setContentView(R.layout.activity_homeactivity);
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         init();
+        getdouyin();
+        getweibo();
+        getzhihu();
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -68,6 +85,149 @@ public class homeactivity extends AppCompatActivity {
         top2 = (TextView) findViewById(R.id.layout_top2);
         textcolor();
         getTopText();
+    }
+
+    private void getdouyin()
+    {
+        String url = "https://tenapi.cn/douyinresou/";
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).get().build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                douyin_titles.add("网络错误！");
+                douyin_hots.add("网络错误!");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                final String responseString = response.body().string();
+                try {
+                    JSONObject jsonobject = new JSONObject(responseString);
+                    if(jsonobject.optString("data").equals("200"))
+                    {
+                        JSONArray jsonArray = jsonobject.optJSONArray("list");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonobjects = jsonArray.optJSONObject(i);
+                            douyin_titles.add(jsonobjects.optString("name"));
+                            douyin_hots.add(jsonobjects.optString("hot"));
+                        }
+                        SharedPreferences sp = getSharedPreferences("douyin", Activity.MODE_PRIVATE);
+                        Gson douyin_gson = new Gson();
+                        String douyin_jsontitle = douyin_gson.toJson(douyin_titles);
+                        String douyin_jsonhot = douyin_gson.toJson(douyin_hots);
+                        SharedPreferences.Editor edit = sp.edit();
+                        edit.putString("douyin_json_title", douyin_jsontitle);
+                        edit.putString("douyin_json_hot", douyin_jsonhot);
+                        edit.commit();
+
+                    }else{
+                        douyin_titles.add("接口失效！");
+                        douyin_hots.add("接口失效!");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } }
+        });
+    }
+
+    private void getweibo()
+    {
+        String url = "https://tenapi.cn/resou/";
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).get().build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                weibo_titles.add("网络错误！");
+                weibo_hots.add("网络错误!");
+                weibo_urls.add("https://tenapi.cn/resou/");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                final String responseString = response.body().string();
+                try {
+                    JSONObject jsonobject = new JSONObject(responseString);
+                    if(jsonobject.optString("data").equals("200"))
+                    {
+                        JSONArray jsonArray = jsonobject.optJSONArray("list");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonobjects = jsonArray.optJSONObject(i);
+                            weibo_titles.add(jsonobjects.optString("name"));
+                            weibo_hots.add(jsonobjects.optString("hot"));
+                            weibo_urls.add(jsonobjects.optString("url"));
+                        }
+                        SharedPreferences sp = getSharedPreferences("weibo", Activity.MODE_PRIVATE);
+                        Gson douyin_gson = new Gson();
+                        String weibo_jsontitle = douyin_gson.toJson(weibo_titles);
+                        String weibo_jsonhot = douyin_gson.toJson(weibo_hots);
+                        String weibo_jsonurl = douyin_gson.toJson(weibo_urls);
+                        SharedPreferences.Editor edit = sp.edit();
+                        edit.putString("weibo_json_title", weibo_jsontitle);
+                        edit.putString("weibo_json_hot", weibo_jsonhot);
+                        edit.putString("weibo_json_url", weibo_jsonurl);
+                        edit.commit();
+                    }else{
+                        weibo_titles.add("接口失效！");
+                        weibo_hots.add("接口失效!");
+                        weibo_urls.add("https://tenapi.cn/resou/");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } }
+        });
+    }
+
+    private void getzhihu()
+    {
+        String url = "https://tenapi.cn/zhihuresou/";
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).get().build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                zhihu_titles.add("网络错误！");
+                zhihu_querys.add("网络错误!");
+                zhihu_urls.add("https://tenapi.cn/zhihuresou/");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                final String responseString = response.body().string();
+                try {
+                    JSONObject jsonobject = new JSONObject(responseString);
+                    if(jsonobject.optString("data").equals("200"))
+                    {
+                        JSONArray jsonArray = jsonobject.optJSONArray("list");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonobjects = jsonArray.optJSONObject(i);
+                            zhihu_titles.add(jsonobjects.optString("name"));
+                            zhihu_querys.add(jsonobjects.optString("query"));
+                            zhihu_urls.add(jsonobjects.optString("url"));
+                        }
+                        SharedPreferences sp = getSharedPreferences("zhihu", Activity.MODE_PRIVATE);
+                        Gson douyin_gson = new Gson();
+                        String zhihu_jsontitle = douyin_gson.toJson(zhihu_titles);
+                        String zhihu_jsonquery = douyin_gson.toJson(zhihu_querys);
+                        String zhihu_jsonurl = douyin_gson.toJson(zhihu_urls);
+                        SharedPreferences.Editor edit = sp.edit();
+                        edit.putString("zhihu_json_title", zhihu_jsontitle);
+                        edit.putString("zhihu_json_query", zhihu_jsonquery);
+                        edit.putString("zhihu_json_url", zhihu_jsonurl);
+                        edit.commit();
+                    }else{
+                        zhihu_titles.add("接口失效！");
+                        zhihu_querys.add("接口失效!");
+                        zhihu_urls.add("https://tenapi.cn/zhihuresou/");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } }
+        });
     }
 
     private void textcolor()

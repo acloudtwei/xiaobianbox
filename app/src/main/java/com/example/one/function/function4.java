@@ -3,14 +3,10 @@ package com.example.one.function;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.one.R;
 import com.example.one.activity.function4_preview;
+import com.example.one.sql.picture_api;
 import com.example.one.util.StringUtils;
 import com.example.one.util.imagUtil;
 import com.example.one.activity.functionactivity;
@@ -25,11 +22,15 @@ import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.example.one.Request.*;
-import android.graphics.Bitmap;
-
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobQueryResult;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SQLQueryListener;
+import com.example.one.database;
 
 public class function4 extends AppCompatActivity {
 
@@ -39,8 +40,11 @@ public class function4 extends AppCompatActivity {
     private EditText f4_fours;
     private EditText f4_fives;
     private EditText f4_sixs;
-    private String api="ERROR";
-    final String[] items = new String[]{"二次元接口1", "二次元接口2", "必应风景图"};
+    private  String api="ERROR";
+    private  String type="imgurl";
+    private final ArrayList<String> item = new ArrayList<>();
+    private final ArrayList<String> apis = new ArrayList<>();
+    private final ArrayList<String> types = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class function4 extends AppCompatActivity {
         setContentView(R.layout.activity_function4);
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         textcolor();
+        query();
         initData();
         initButton1();
         initButton2();
@@ -77,31 +82,20 @@ private String geturl()
             +f4_sixs.getText().toString().trim()+"&pic=";
 }
 
-
-
 private void initButton1()
 {
     Button f4_button1 = (Button) findViewById(R.id.f4_button1);
     f4_button1.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            String[] items = new String[item.size()];
+            item.toArray(items);
             new QMUIDialog.MenuDialogBuilder(function4.this)
                     .addItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            switch (which){
-                                case 0:
-                                    api = "https://api.ixiaowai.cn/api/api.php?return=json";
-                                    break;
-                                case 1:
-                                    api = "https://acg.toubiec.cn/random.php?ret=json";
-                                    break;
-                                case 2:
-                                    api = "https://tenapi.cn/bing/";
-                                    break;
-                                default:
-                                    api = "ERROR";
-                            }
+                            api = apis.get(which);
+                            type = types.get(which);
                             Toast.makeText(function4.this, "你选择了 " + items[which], Toast.LENGTH_SHORT).show();
                             f4_button1.setText(items[which]);
                             dialog.dismiss();
@@ -111,6 +105,29 @@ private void initButton1()
         }
     });
 }
+
+private void query() { //查询数据库，获取的数据存在数组里面
+    String sql = "select * from picture_api";
+    BmobQuery<picture_api> bmobQuery = new BmobQuery<>();
+    bmobQuery.setSQL(sql);
+    bmobQuery.doSQLQuery(new SQLQueryListener<picture_api>() {
+        @Override
+        public void done(BmobQueryResult<picture_api> bmobQueryResult, BmobException e) {
+            if (e == null) {
+              List<picture_api> list = (List<picture_api>) bmobQueryResult.getResults();
+               for(int i = 0;i<list.size();i++)
+              {
+                    item.add(list.get(i).getOther());
+                    apis.add(list.get(i).getApi());
+                    types.add(list.get(i).getChoose());
+
+              }
+                } else {
+                    Toast.makeText(function4.this,"网络错误",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
 private void initButton2()
 {
@@ -149,6 +166,7 @@ private void initButton2()
             Intent intent = new Intent(function4.this, function4_preview.class);
             intent.putExtra("url", geturl());
             intent.putExtra("api", api);
+            intent.putExtra("type", type);
             startActivity(intent);
         }
     });
@@ -161,8 +179,11 @@ private void initButton3()
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onClick(View v) {
-            imagUtil.saveImageToGallery(function4.this,request1.img_bitmap());
-
+            if(request1.img_bitmap() == null) {
+                Toast.makeText(function4.this,"请先预览看看，再确定是否保存！",Toast.LENGTH_SHORT).show();
+            }else{
+                imagUtil.saveImageToGallery(function4.this, request1.img_bitmap());
+            }
         }
     });
  }
@@ -176,21 +197,6 @@ private void initData()
     f4_fives = (EditText) findViewById(R.id.f4_fives);
     f4_sixs = (EditText) findViewById(R.id.f4_sixs);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private void textcolor()
     {

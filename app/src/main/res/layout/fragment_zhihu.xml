@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:background="@drawable/weather"
+        android:text="知乎今日热搜"
+        android:gravity="center"/>
+
+    <ListView
+        android:id="@+id/zhihu_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:divider="#d9d9d9"
+        android:dividerHeight="1dp"/>
+
+</LinearLayout>

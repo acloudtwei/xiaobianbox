@@ -19,8 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.One"
-        tools:replace="android:theme">
-        <activity android:name=".activity.function4_preview"></activity>
+        tools:replace="android:theme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".resou_webview"></activity>
+        <activity android:name=".function.function6" />
+        <activity android:name=".activity.function5_preview" />
+        <activity android:name=".activity.function4_preview" />
         <activity android:name=".function.function5" />
         <activity android:name=".function.function4" />
         <activity android:name=".function.function3" />

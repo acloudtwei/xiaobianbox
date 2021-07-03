@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.one.R;
 import com.example.one.function.*;
+import com.example.one.function.function6;
 import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
 
@@ -101,6 +102,12 @@ public class functionactivity extends AppCompatActivity {
     public void function5(View view)
     {
         Intent intent = new Intent(functionactivity.this, function5.class);
+        startActivity(intent);
+    }
+
+    public void function6(View view)
+    {
+        Intent intent = new Intent(functionactivity.this, function6.class);
         startActivity(intent);
     }
 

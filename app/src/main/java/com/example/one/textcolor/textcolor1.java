@@ -5,6 +5,7 @@ import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.widget.TextView;
 
+
 public class textcolor1 {
 
     public static void setTextViewStyles(TextView textView) {

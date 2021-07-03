@@ -32,16 +32,4 @@
 
     </LinearLayout>
 
-
-
-
-<!--    -->
-<!--    <com.loopj.android.image.SmartImageView-->
-<!--        android:id="@+id/abc"-->
-<!--        android:layout_width="500dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_marginTop="28dp" />-->
-
-
 </RelativeLayout>

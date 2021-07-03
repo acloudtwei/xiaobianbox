@@ -21,6 +21,7 @@
     <string name="layout_top1">威威工具箱</string>
     <string name="function1">常用工具</string>
     <string name="function2">特别工具</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
     <!--    android:layout_alignParentLeft="true"  &#45;&#45;将控件的左边缘和父控件的左边缘对齐-->
