@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.one.R;
+import com.example.one.sql.User;
 import com.example.one.util.StringUtils;
 import com.githang.statusbar.StatusBarCompat;
 

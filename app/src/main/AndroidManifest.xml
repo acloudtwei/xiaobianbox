@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
 
     <application
         android:allowBackup="true"
@@ -19,9 +20,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.One"
-        tools:replace="android:theme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".resou_webview"></activity>
+        android:usesCleartextTraffic="true"
+        tools:replace="android:theme">
+        <activity android:name=".My.feedbacks"></activity>
+        <activity android:name=".My.abouts" />
+        <activity android:name=".My.myconfigs" />
+        <activity android:name=".activity.myactivity" />
+        <activity android:name=".zhihu_webview" />
+        <activity android:name=".weibo_webview" />
         <activity android:name=".function.function6" />
         <activity android:name=".activity.function5_preview" />
         <activity android:name=".activity.function4_preview" />
@@ -42,9 +48,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="cn.bmob.v3.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.example.one.BmobContentProvider" />
+
+        <meta-data android:value="Channel ID" android:name="BMOB_CHANNEL"/>
 
         <meta-data
             android:name="design_width_in_dp"

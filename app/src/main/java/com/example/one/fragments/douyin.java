@@ -2,6 +2,7 @@ package com.example.one.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -10,9 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.one.R;
+import com.example.one.weibo_webview;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
@@ -27,6 +32,7 @@ public class douyin extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_douyin,container,false);
+
         SharedPreferences sp = Objects.requireNonNull(getActivity()).getSharedPreferences("douyin", Activity.MODE_PRIVATE);
         String titles_listJson = sp.getString("douyin_json_title","");
         String hots_listJson = sp.getString("douyin_json_hot","");
@@ -63,6 +69,7 @@ public class douyin extends Fragment {
             public TextView douyin_number;
             public TextView douyin_title;
             public TextView douyin_hot;
+            public LinearLayout douyin_button;
         }
 
         @Override
@@ -96,6 +103,7 @@ public class douyin extends Fragment {
                 douyins.douyin_number = (TextView) convertView.findViewById(R.id.douyin_number);
                 douyins.douyin_title = (TextView) convertView.findViewById(R.id.douyin_title);
                 douyins.douyin_hot = (TextView) convertView.findViewById(R.id.douyin_hot);
+                douyins.douyin_button = (LinearLayout) convertView.findViewById(R.id.douyin_button);
                 convertView.setTag(douyins);
             } else {
                 douyins = (DouYin) convertView.getTag();
@@ -104,6 +112,12 @@ public class douyin extends Fragment {
             douyins.douyin_number.setText(String.valueOf(position+1)+".");
             douyins.douyin_title.setText(douyin_titles.get(position));
             douyins.douyin_hot.setText(douyin_hots.get(position));
+            douyins.douyin_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getActivity(),"点啥呢，这个没有跳转~",Toast.LENGTH_SHORT).show();
+                }
+            });
             return convertView;
         }
 

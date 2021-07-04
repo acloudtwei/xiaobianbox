@@ -40,7 +40,7 @@
 
         <EditText
             android:id="@+id/weather_id"
-            android:layout_width="350dp"
+            android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:theme="@style/hint_style"
@@ -48,8 +48,8 @@
 
         <Button
             android:onClick="weather_onclik"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@mipmap/tianqi_1"
             tools:ignore="OnClick" />
 

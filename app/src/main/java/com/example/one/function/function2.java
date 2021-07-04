@@ -68,7 +68,7 @@ private void init()
 
 public void onclicks(View view)
 {
-              String url = "https://xiaojieapi.com/api/v1/get/express?num=" + express_id.getText().toString().trim();
+                String url = "https://xiaojieapi.com/api/v1/get/express?num=" + express_id.getText().toString().trim();
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder().url(url).get().build();
                 Call call = client.newCall(request);
@@ -107,9 +107,8 @@ public void onclicks(View view)
                                         Toast.makeText(function2.this,"输入错误，请输入正确的快递单号！",Toast.LENGTH_SHORT).show();
                                     }
 
-//                                    75478446567139
                                 } catch (JSONException e) {
-                                    e.printStackTrace();
+                                    Toast.makeText(function2.this,"接口异常，功能暂时无法使用，修复中....",Toast.LENGTH_SHORT).show();
                                 }
                     }}
                         );}

@@ -85,6 +85,7 @@ public class function3 extends AppCompatActivity {
 
     public void weather_onclik(View view)
     {
+        dates.clear();directs.clear();temperatures.clear();weathers.clear();
         String url = "https://apis.juhe.cn/simpleWeather/query?key=7a579ac2ff9b401f815fbe5fd543971c&city=" + weather_id.getText().toString().trim();
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).get().build();
@@ -96,7 +97,6 @@ public class function3 extends AppCompatActivity {
                 Toast.makeText(function3.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 Looper.loop();
             }
-
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 final String responseString = response.body().string();

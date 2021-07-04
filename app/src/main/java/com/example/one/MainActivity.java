@@ -2,6 +2,9 @@ package com.example.one;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.one.activity.login_activity;
+import com.example.one.activity.myactivity;
 import com.example.one.sql.*;
 import com.example.one.activity.homeactivity;
 import android.content.Intent;
@@ -29,10 +32,12 @@ import java.util.List;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.update.BmobUpdateAgent;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -54,12 +59,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "83e23941491c7cce0cda92a4fdfe54c8");
         setContentView(R.layout.activity_mains);
-//        StatusBarCompat.setStatusBarColor(this, color, lightStatusBar)
-//        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, R.color.colorAccent));
+        BmobUpdateAgent.initAppVersion();
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         get_bgs();
         initView();
         initData();
+        if (BmobUser.isLogin()) {
+            User user = BmobUser.getCurrentUser(User.class);
+            Toast.makeText(MainActivity.this, "已经登录：" + user.getUsername(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, homeactivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this,login_activity.class);
+            startActivity(intent);
+        }
+
+//        BmobUpdateAgent.setUpdateOnlyWifi(false);
+//        BmobUpdateAgent.update(this);
 //        handler = new Handler(new Handler.Callback() {
 //            @Override
 //            public boolean handleMessage(@NonNull Message msg) {
@@ -105,10 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onclick1(View v)
     {
-        Intent intent = new Intent(MainActivity.this,homeactivity.class);
-        startActivity(intent);
-//        Intent intent = new Intent(MainActivity.this, login_activity.class);
+//        Intent intent = new Intent(MainActivity.this,homeactivity.class);
 //        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, login_activity.class);
+        startActivity(intent);
 //        BmobUser.requestEmailVerify("1559295172@qq.com", new UpdateListener() {
 //            @Override
 //            public void done(BmobException e) {

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bt_register_begin"
+    tools:context=".My.myconfigs">
+
+<!--    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        app:civ_border_width="2dp"-->
+<!--        app:civ_border_color="#FFFFFF"-->
+<!--        android:id="@+id/head_photo"-->
+<!--        android:src="@mipmap/ic_launcher"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_230dp"
+        android:layout_marginLeft="@dimen/dimen_18dp"
+        android:layout_marginRight="@dimen/dimen_18dp"
+        android:background="@drawable/shape_login_form"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimen_43dp"
+        android:paddingRight="@dimen/dimen_31dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_25dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:src="@mipmap/account" />
+
+            <EditText
+                android:id="@+id/et_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:background="@null"
+                android:hint="@string/hint_username"
+                android:textColor="#000000"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/dimen_18sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="@dimen/dimen_23dp"
+            android:layout_marginBottom="@dimen/dimen_23dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_25dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:src="@mipmap/logo_email" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:background="@null"
+                android:inputType="textEmailAddress"
+                android:hint="@string/hint_email"
+                android:textColor="@color/black"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/dimen_18sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:layout_marginTop="@dimen/dimen_23dp"
+            android:layout_marginBottom="@dimen/dimen_23dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_25dp"
+                android:layout_height="@dimen/dimen_25dp"
+                android:src="@mipmap/pwd" />
+
+            <EditText
+                android:id="@+id/et_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:hint="@string/hint_pwd"
+                android:textColor="@color/black"
+                android:textColorHint="#bcbcbc"
+                android:textSize="@dimen/dimen_18sp" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

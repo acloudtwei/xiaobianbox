@@ -22,7 +22,6 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +43,7 @@ public class function6 extends AppCompatActivity implements  ViewPager.OnPageCha
     private int[] images = new int[]{
             R.mipmap.douyin_1,
             R.mipmap.weibo_2,
-            R.mipmap.zhihu_2};
+            R.mipmap.touxiang_zhihu};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class function6 extends AppCompatActivity implements  ViewPager.OnPageCha
         setContentView(R.layout.activity_function6);
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         textcolor();
-        initView(); //控件初始化
+        initView(); //控件初始
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager,true);
 
@@ -60,10 +59,24 @@ public class function6 extends AppCompatActivity implements  ViewPager.OnPageCha
         if (id == 1) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.weibo_container,new weibo())
+                    .replace(R.id.zhihu_container,new zhihu())
                     .addToBackStack(null)
                     .commit();
         }
+
+//        if (id == 1) {
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.weibo_container,new weibo())
+//                    .addToBackStack(null)
+//                    .commit();
+//        }else{
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.zhihu_container,new zhihu())
+//                .addToBackStack(null)
+//                .commit();
+//        }
     }
 
     @Override

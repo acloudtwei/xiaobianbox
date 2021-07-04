@@ -24,6 +24,21 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <!-- finally -->
+    <string name="words">
+        大家好，我是威威工具箱的开发者，开发这款小应用的目的是方便大家在生活中使用，比如一些
+        查询天气，物流信息等，都可以使用这个应用，目前此应用处于开发阶段，功能善为完善，UI界面也有待
+        提升，优化也还得提升，所以有bug的话大家可以在”反馈信息“处提交！
+    </string>
+
+    <!-- author -->
+    <string name="authors">Acloudtwei</string>
+    <string name="wxs">WX：acloudtwei"</string>
+    <string name="webs">https://film.itwei.top/my</string>
+
+    <!-- feedbacks -->
+    <string name="feedback">请输入反馈信息，不超过1000字！</string>
+
     <!--    android:layout_alignParentLeft="true"  &#45;&#45;将控件的左边缘和父控件的左边缘对齐-->
     <!--    android:layout_alignParentTop="true"  &#45;&#45;将控件的上边缘和父控件的上边缘对齐-->
     <!--    android:layout_alignParentRight="true"  &#45;&#45;将控件的右边缘和父控件的右边缘对齐-->

@@ -5,9 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.one.R;
-import com.example.one.resou_webview;
+import com.example.one.zhihu_webview;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -101,9 +99,9 @@ public class zhihu extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            zhihu.MyBaseAdapter.ZhiHu zhihus = null;
+            ZhiHu zhihus = null;
             if (convertView == null) {
-                zhihus = new zhihu.MyBaseAdapter.ZhiHu();
+                zhihus = new ZhiHu();
                 //获得组件，实例化组件
                 convertView = layoutInflater.inflate(R.layout.zhihu_item, null);
                 zhihus.zhihu_number = (TextView) convertView.findViewById(R.id.zhihu_number);
@@ -112,7 +110,7 @@ public class zhihu extends Fragment {
                 zhihus.zhihu_button = (LinearLayout) convertView.findViewById(R.id.zhihu_button);
                 convertView.setTag(zhihus);
             } else {
-                zhihus = (ZhiHu)convertView.getTag();
+                zhihus = (ZhiHu) convertView.getTag();
             }
             //绑定数据
             zhihus.zhihu_number.setText(String.valueOf(position+1)+".");
@@ -121,7 +119,7 @@ public class zhihu extends Fragment {
             zhihus.zhihu_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), resou_webview.class);
+                    Intent intent = new Intent(getActivity(), zhihu_webview.class);
                     Bundle bundle = new Bundle();
                     bundle.putInt("position",position);
                     intent.putExtra("zhihu",bundle);

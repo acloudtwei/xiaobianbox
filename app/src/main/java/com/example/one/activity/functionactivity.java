@@ -75,6 +75,12 @@ public class functionactivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onclick_my(View view)
+    {
+        Intent intent = new Intent(functionactivity.this,myactivity.class);
+        startActivity(intent);
+    }
+
     public void function1(View view)
     {
         Intent intent = new Intent(functionactivity.this, function1.class);

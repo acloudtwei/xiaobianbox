@@ -4,29 +4,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.one.R;
-import com.example.one.function.function6;
-import com.example.one.resou_webview;
+import com.example.one.weibo_webview;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nostra13.universalimageloader.utils.L;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,9 +99,9 @@ public class weibo extends Fragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            weibo.MyBaseAdapter.WeiBo weibos = null;
+            WeiBo weibos = null;
             if (convertView == null) {
-                weibos = new weibo.MyBaseAdapter.WeiBo();
+                weibos = new WeiBo();
                 //获得组件，实例化组件
                 convertView = layoutInflater.inflate(R.layout.weibo_item, null);
                 weibos.weibo_number = (TextView) convertView.findViewById(R.id.weibo_number);
@@ -127,7 +119,7 @@ public class weibo extends Fragment {
             weibos.weibo_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(),resou_webview.class);
+                    Intent intent = new Intent(getActivity(), weibo_webview.class);
                     Bundle bundle = new Bundle();
                     bundle.putInt("position",position);
                     intent.putExtra("weibo",bundle);

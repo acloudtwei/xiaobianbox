@@ -146,7 +146,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:onClick="onclick_my"
                 android:background="@drawable/button_selector3" />
+
             <TextView
                 android:id="@+id/my"
                 android:layout_width="wrap_content"

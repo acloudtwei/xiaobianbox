@@ -244,6 +244,12 @@ public class homeactivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onclick_my(View view)
+    {
+        Intent intent = new Intent(homeactivity.this,myactivity.class);
+        startActivity(intent);
+    }
+
     private void getTopText()
     {
         String url = "https://xiaojieapi.com/api/v1/get/yiyan";

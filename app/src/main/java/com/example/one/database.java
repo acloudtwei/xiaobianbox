@@ -12,6 +12,7 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class database {
+
     public void create() // 增加
     {
         person p2 = new person();
