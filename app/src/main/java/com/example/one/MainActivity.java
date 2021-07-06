@@ -3,6 +3,7 @@ package com.example.one;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.one.activity.BaseActivity;
 import com.example.one.activity.login_activity;
 import com.example.one.activity.myactivity;
 import com.example.one.sql.*;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.example.one.activity.register_activity;
 import com.githang.statusbar.StatusBarCompat;
 import com.loopj.android.image.SmartImageView;
+import com.squareup.picasso.Picasso;
 
 
 import org.jetbrains.annotations.NotNull;
@@ -38,6 +40,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.update.BmobUpdateAgent;
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -64,15 +67,18 @@ public class MainActivity extends AppCompatActivity {
         get_bgs();
         initView();
         initData();
-        if (BmobUser.isLogin()) {
-            User user = BmobUser.getCurrentUser(User.class);
-            Toast.makeText(MainActivity.this, "已经登录：" + user.getUsername(), Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MainActivity.this, homeactivity.class);
-            startActivity(intent);
-        } else {
-            Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MainActivity.this,login_activity.class);
-            startActivity(intent);
+            if (BmobUser.isLogin()) {
+                User user = BmobUser.getCurrentUser(User.class);
+                if(user.getEmailVerified() != null) {
+                    Toast.makeText(MainActivity.this, "已经登录：" + user.getUsername(), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MainActivity.this, homeactivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(MainActivity.this, "账号："+user.getUsername()+"还没有验证邮箱！", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                    Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_LONG).show();
         }
 
 //        BmobUpdateAgent.setUpdateOnlyWifi(false);

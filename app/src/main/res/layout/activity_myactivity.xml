@@ -32,24 +32,33 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/myactivity_img"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_below="@+id/function_taps"
         android:layout_marginTop="0dp"
-        android:scaleType="fitXY"
-        android:src="@mipmap/b2" />
+        android:scaleType="fitXY" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_marginTop="70dp"
         app:civ_border_width="2dp"
         app:civ_border_color="#FFFFFF"
         android:id="@+id/head_photo"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/xingxing"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/function_taps"
         android:layout_width="100dp"
         android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/usernames"
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/head_photo"/>
 
     <LinearLayout
         android:layout_marginTop="60dp"
@@ -93,7 +102,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:src="@mipmap/liuxing" />
+                android:src="@mipmap/biaoqian" />
 
             <TextView
                 android:id="@+id/myconfig"
@@ -106,7 +115,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/tool"
+            android:id="@+id/psw"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -118,7 +127,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:src="@mipmap/liuxing" />
+                android:src="@mipmap/mima_3" />
 
             <TextView
                 android:id="@+id/f1"
@@ -143,7 +152,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:src="@mipmap/liuxing" />
+                android:src="@mipmap/fankui" />
 
             <TextView
                 android:id="@+id/feedback"
@@ -168,7 +177,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:src="@mipmap/liuxing" />
+                android:src="@mipmap/tubiao" />
 
             <TextView
                 android:id="@+id/about"
@@ -180,7 +189,32 @@
 
         </LinearLayout>
 
-<!--        <LinearLayout-->
+        <LinearLayout
+            android:id="@+id/quit"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/list_item"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:src="@mipmap/tuichu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="退出登陆"
+                android:textSize="@dimen/dimen_18sp" />
+
+        </LinearLayout>
+
+
+        <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="0dp"-->
 <!--            android:layout_weight="1"-->

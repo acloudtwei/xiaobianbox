@@ -86,11 +86,11 @@ public class weibo_webview extends AppCompatActivity {
 
     public void weibo_listview(View view)
     {
-//        Intent intent = new Intent(this, function6.class);
-//        startActivity(intent);
         Intent intent = new Intent(this, function6.class);
-        intent.putExtra("id",1);
         startActivity(intent);
+//        Intent intent = new Intent(this, function6.class);
+//        intent.putExtra("id",1);
+//        startActivity(intent);
 //        overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
     }
 }

@@ -14,6 +14,7 @@ import com.example.one.activity.functionactivity;
 import com.example.one.activity.myactivity;
 import com.example.one.function.function4;
 import com.example.one.sql.authorconfig;
+import com.example.one.sql.notice;
 import com.example.one.sql.picture_api;
 import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
@@ -33,8 +34,28 @@ public class abouts extends AppCompatActivity {
         setContentView(R.layout.activity_abouts);
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         textcolor();
+        querys();
         query();
     }
+
+    private void querys() { //查询数据库，获取的数据存在数组里面
+        TextView about_me = (TextView) findViewById(R.id.about_me);
+        String sql = "select * from notice";
+        BmobQuery<notice> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<notice>() {
+            @Override
+            public void done(BmobQueryResult<notice> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<notice> list = (List<notice>) bmobQueryResult.getResults();
+                    about_me.setText(list.get(1).getNotice());
+                } else {
+                    about_me.setText(R.string.words);
+                }
+            }
+        });
+    }
+
 
     private void query() { //查询数据库，获取的数据存在数组里面
         TextView author = (TextView) findViewById(R.id.author);

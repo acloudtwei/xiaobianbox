@@ -48,7 +48,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:gravity="center"
-                android:src="@mipmap/caidan2x" />
+                android:src="@mipmap/fankui" />
 
             <TextView
                 android:id="@+id/feedback_my"
@@ -76,7 +76,7 @@
             android:id="@+id/feedback_messsage"
             android:layout_marginTop="@dimen/dimen_20dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="200dp"
             android:layout_weight="1"
             android:background="@drawable/shape_login_form"
             android:theme="@style/hint_style"

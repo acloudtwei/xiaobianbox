@@ -67,7 +67,7 @@ public class zhihu_webview extends AppCompatActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 try {
-                    if(url.startsWith("http") || url.startsWith("https")){
+                    if(webView.getUrl().startsWith("http") || webView.getUrl().startsWith("https")){
                         //使用WebView加载显示url
                         view.loadUrl(url);
                     }
@@ -84,6 +84,32 @@ public class zhihu_webview extends AppCompatActivity {
             }
         });
 
+//        mWebView.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//                WebView.HitTestResult hit = view.getHitTestResult();
+//                //hit.getExtra()为null或者hit.getType() == 0都表示即将加载的URL会发生重定向，需要做拦截处理
+//                if (TextUtils.isEmpty(hit.getExtra()) || hit.getType() == 0) {
+//
+//                }
+//                //加载的url是http/https协议地址
+//                if (request.getUrl().getScheme().startsWith("http://") || request.getUrl().getScheme().startsWith("https://")){
+//                    view.loadUrl(request.getUrl().toString());
+//                    return false;
+//                }else{
+//                    //加载的url是自定义协议地址
+//                    try {
+//                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(request.getUrl().toString()));
+//                        Main1Activity.this.startActivity(intent);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                    return true;
+//                }
+//            }
+//
+//        });
+
         webView.setWebViewClient(new WebViewClient(){
             @Override
 
@@ -97,11 +123,11 @@ public class zhihu_webview extends AppCompatActivity {
 
     public void zhihu_listview(View view)
     {
-//        Intent intent = new Intent(this, function6.class);
-//        startActivity(intent);
         Intent intent = new Intent(this, function6.class);
-        intent.putExtra("id",1);
         startActivity(intent);
+//        Intent intent = new Intent(this, function6.class);
+//        intent.putExtra("id",1);
+//        startActivity(intent);
 //        overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
     }
 }

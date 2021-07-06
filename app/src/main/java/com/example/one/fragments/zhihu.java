@@ -51,7 +51,6 @@ public class zhihu extends Fragment {
             Gson gson = new Gson();
             zhihu_urls = gson.fromJson(urls_listJson,new TypeToken<List<String>>(){}.getType());
         }
-        Log.d("apccc", zhihu_urls.get(0));
         ListView mListView = (ListView) view.findViewById(R.id.zhihu_listview); // 这个是找到我们的listview标签
         zhihu.MyBaseAdapter mAdapter = new zhihu.MyBaseAdapter(getActivity()); // 这个是创建一个适配器的对象（这个适配器是我们继承父类的子类）
         mListView.setAdapter(mAdapter); // 这个是将我们的这个listview的适配器设置为我们创建的这个适配器

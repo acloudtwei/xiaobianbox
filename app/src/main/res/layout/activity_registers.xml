@@ -7,10 +7,10 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/register_img"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_329dp"
-        android:scaleType="fitXY"
-        android:src="@mipmap/b2" />
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
 
                 <EditText
                     android:id="@+id/et_account"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_20dp"
                     android:background="@null"
@@ -72,7 +72,7 @@
 
                 <EditText
                     android:id="@+id/et_email"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_20dp"
                     android:background="@null"
@@ -104,7 +104,7 @@
 
                 <EditText
                     android:id="@+id/et_pwd"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_20dp"
                     android:background="@null"

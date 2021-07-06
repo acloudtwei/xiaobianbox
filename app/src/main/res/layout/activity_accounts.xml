@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bt_register_begin"
+    tools:context=".My.accounts">
+
+    <LinearLayout
+        android:id="@+id/account_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_color"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="back_myactivity"
+            android:background="@drawable/all_arrow"/>
+
+        <TextView
+            android:id="@+id/function1_text"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/layout_top1"
+            android:textSize="@dimen/dimen_20sp"
+            android:layout_marginStart="@dimen/dimen_20dp" />
+
+    </LinearLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="30dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FFFFFF"
+        android:id="@+id/touxiang"
+        android:src="@mipmap/xingxing"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/account_top"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/weather"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/touxiang"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/accout_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/list_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:src="@mipmap/nicheng" />
+
+        <TextView
+            android:id="@+id/accout_nicknames"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:text="昵称："
+            android:textSize="@dimen/dimen_18sp" />
+
+        <TextView
+            android:id="@+id/accout_nicknamed"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:textSize="@dimen/dimen_18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accout_username"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/list_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:src="@mipmap/yonghuming" />
+
+        <TextView
+            android:id="@+id/accout_usernames"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:text="用户名"
+            android:textSize="@dimen/dimen_18sp" />
+
+        <TextView
+            android:id="@+id/accout_usernamed"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:textSize="@dimen/dimen_18sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/account_useremail"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/list_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:src="@mipmap/youxiang" />
+
+        <TextView
+            android:id="@+id/account_useremails"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:text="邮箱"
+            android:textSize="@dimen/dimen_18sp" />
+
+        <TextView
+            android:id="@+id/account_useremaild"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:textSize="@dimen/dimen_18sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/account_qq"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/list_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:src="@mipmap/wodeqq" />
+
+        <TextView
+            android:id="@+id/account_qqs"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="QQ号"
+            android:textSize="@dimen/dimen_18sp" />
+
+        <TextView
+            android:id="@+id/account_qqd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:textSize="@dimen/dimen_18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</RelativeLayout>

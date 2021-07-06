@@ -6,15 +6,23 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.one.R;
 import com.example.one.sql.User;
+import com.example.one.sql.myphoto;
 import com.example.one.util.StringUtils;
 import com.githang.statusbar.StatusBarCompat;
+import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
@@ -31,6 +39,7 @@ public class register_activity extends BaseActivity {
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         initView();
         initData();
+        query();
     }
 
     protected void initView() { // 类似于注册
@@ -51,6 +60,25 @@ public class register_activity extends BaseActivity {
             }
         });
     }
+
+    private void query() { //查询数据库，获取的数据存在数组里面
+        ImageView register_img = (ImageView) findViewById(R.id.register_img);
+        String sql = "select * from myphoto";
+        BmobQuery<myphoto> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<myphoto>() {
+            @Override
+            public void done(BmobQueryResult<myphoto> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<myphoto> list = (List<myphoto>) bmobQueryResult.getResults();
+                    Picasso.with(register_activity.this).load(list.get(0).getUrl()).into(register_img);
+                } else {
+                    Picasso.with(register_activity.this).load("https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkjenkjaj31hc0u0dwt.jpg").into(register_img);
+                }
+            }
+        });
+    }
+
 
     private void register (String account, String pwd, String email){
             if (StringUtils.isEmpty(account)) {
@@ -81,6 +109,7 @@ public class register_activity extends BaseActivity {
                 if (e == null) {
                     Toast.makeText(register_activity.this,"注册成功，请到" + email + "邮箱中进行激活,如果没有激活无法登录!",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(register_activity.this,login_activity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } else {
                     showToast("注册失败（提示信息）:" + e.getMessage());

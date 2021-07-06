@@ -10,11 +10,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 推送所需的权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/xingxingtuijian"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -22,9 +24,14 @@
         android:theme="@style/Theme.One"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
-        <activity android:name=".My.feedbacks"></activity>
+        <activity android:name=".UserMessage.qq"></activity>
+        <activity android:name=".UserMessage.email" />
+        <activity android:name=".UserMessage.nickname" />
+        <activity android:name=".My.accounts" />
+        <activity android:name=".activity.resetPassword" />
+        <activity android:name=".My.PassWord" />
+        <activity android:name=".My.feedbacks" />
         <activity android:name=".My.abouts" />
-        <activity android:name=".My.myconfigs" />
         <activity android:name=".activity.myactivity" />
         <activity android:name=".zhihu_webview" />
         <activity android:name=".weibo_webview" />
@@ -45,20 +52,25 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <!-- <action android:name="android.intent.action.VIEW"/> -->
+                <!-- <category android:name="android.intent.category.DEFAULT"/> -->
+                <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+                <!-- <data android:scheme="acloudtwei"/> -->
+
             </intent-filter>
         </activity>
-
         <activity
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.example.one.BmobContentProvider" />
 
-        <meta-data android:value="Channel ID" android:name="BMOB_CHANNEL"/>
-
+        <meta-data
+            android:name="BMOB_CHANNEL"
+            android:value="Channel ID" />
         <meta-data
             android:name="design_width_in_dp"
             android:value="405" />

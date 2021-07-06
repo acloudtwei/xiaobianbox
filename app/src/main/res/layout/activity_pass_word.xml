@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bt_register_begin"
+    tools:context=".My.PassWord">
+
+    <LinearLayout
+        android:id="@+id/image_below"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_color"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="main_function"
+            android:background="@drawable/all_arrow"/>
+
+        <TextView
+            android:id="@+id/function1_text"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/layout_top1"
+            android:textSize="@dimen/dimen_20sp"
+            android:layout_marginStart="@dimen/dimen_20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/weather"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/mima_3" />
+
+            <TextView
+                android:id="@+id/before_psw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/dimen_18sp"
+                android:text="原密码："/>
+
+            <EditText
+                android:id="@+id/before_psws"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/hint_style"
+                android:lines="1"
+                android:textColor="#495057"
+                android:hint="请输入原密码"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/mima_1" />
+
+            <TextView
+                android:id="@+id/after_psw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/dimen_18sp"
+                android:text="新密码："/>
+
+            <EditText
+                android:id="@+id/after_psws"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/hint_style"
+                android:lines="1"
+                android:textColor="#495057"
+                android:hint="请输入新密码"/>
+
+        </LinearLayout>
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:src="@mipmap/fankui" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/before_email"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="@dimen/dimen_18sp"-->
+<!--                android:text="邮箱："/>-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/before_emails"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:theme="@style/hint_style"-->
+<!--                android:lines="1"-->
+<!--                android:textColor="#495057"-->
+<!--                android:hint="请输入您的邮箱"/>-->
+
+<!--        </LinearLayout>-->
+
+        <Button
+            android:id="@+id/change_psw"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_button_layout"
+            android:textColor="@color/white"
+            android:text="修改"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

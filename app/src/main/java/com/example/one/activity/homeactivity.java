@@ -5,12 +5,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
+
 import android.os.Bundle;
+
+
+import com.example.one.sql.notice;
 import com.example.one.textcolor.*;
 
 import android.os.Handler;
@@ -24,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.one.R;
 import com.githang.statusbar.StatusBarCompat;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -34,6 +34,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobQueryResult;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SQLQueryListener;
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -63,6 +69,7 @@ public class homeactivity extends AppCompatActivity {
         setContentView(R.layout.activity_homeactivity);
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.top_color),false);
         init();
+        query();
         getdouyin();
         getweibo();
         getzhihu();
@@ -85,6 +92,26 @@ public class homeactivity extends AppCompatActivity {
         top2 = (TextView) findViewById(R.id.layout_top2);
         textcolor();
         getTopText();
+        query();
+    }
+
+    private void query() { //查询数据库，获取的数据存在数组里面
+        TextView notices = (TextView) findViewById(R.id.notices);
+        String sql = "select * from notice";
+        BmobQuery<notice> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<notice>() {
+            @Override
+            public void done(BmobQueryResult<notice> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<notice> list = (List<notice>) bmobQueryResult.getResults();
+                    notices.setText(list.get(0).getNotice());
+                } else {
+                    notices.setText("网络错误 or 程序错误");
+
+                }
+            }
+        });
     }
 
     private void getdouyin()
@@ -233,21 +260,27 @@ public class homeactivity extends AppCompatActivity {
     private void textcolor()
     {
         // 作用是修改字体的颜色
+        TextView notice = (TextView) findViewById(R.id.notice);
         textcolor1.setTextViewStyles(home);
         textcolor1.setTextViewStyles(function);
         textcolor1.setTextViewStyles(my);
+        textcolor1.setTextViewStyles(notice);
     }
 
     public void onclick_function(View view)
     {
         Intent intent = new Intent(homeactivity.this,functionactivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
     public void onclick_my(View view)
     {
         Intent intent = new Intent(homeactivity.this,myactivity.class);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
     private void getTopText()

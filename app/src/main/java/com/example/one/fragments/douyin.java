@@ -46,7 +46,6 @@ public class douyin extends Fragment {
             Gson gson = new Gson();
             douyin_hots = gson.fromJson(hots_listJson,new TypeToken<List<String>>(){}.getType());
         }
-        Log.d("apccc", douyin_titles.get(0));
         ListView mListView = (ListView) view.findViewById(R.id.douyin_listview); // 这个是找到我们的listview标签
         MyBaseAdapter mAdapter = new MyBaseAdapter(getActivity()); // 这个是创建一个适配器的对象（这个适配器是我们继承父类的子类）
         mListView.setAdapter(mAdapter); // 这个是将我们的这个listview的适配器设置为我们创建的这个适配器

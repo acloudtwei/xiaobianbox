@@ -33,10 +33,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/function_tap"
+        android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <LinearLayout
@@ -60,9 +59,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/shape_big_register_btn"
                     android:gravity="center"
-                    android:text="@string/function1"
+                    android:text="常用工具"
                     android:textSize="@dimen/dimen_18sp" />
 
             </LinearLayout>
@@ -72,7 +70,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,21 +77,21 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:layout_width="@dimen/button_width"
-                        android:layout_height="@dimen/button_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="100dp"
                         android:background="@drawable/all_button_layout"
                         android:onClick="function1"
-                        android:text="功能1"
+                        android:text="60s读世界"
                         android:textColor="#d6336c" />
 
                     <Button
-                        android:layout_width="@dimen/button_width"
-                        android:layout_height="@dimen/button_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="40dp"
                         android:background="@drawable/all_button_layout"
                         android:onClick="function2"
-                        android:text="功能1"
+                        android:text="快递查询"
                         android:textColor="#d6336c" />
 
                 </LinearLayout>
@@ -106,30 +103,30 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:layout_width="@dimen/button_width"
-                        android:layout_height="@dimen/button_height"
-                        android:layout_marginStart="60dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="58dp"
                         android:background="@drawable/all_button_layout"
                         android:onClick="function3"
-                        android:text="功能1"
+                        android:text="天气查询"
                         android:textColor="#d6336c" />
 
                     <Button
-                        android:layout_width="@dimen/button_width"
-                        android:layout_height="@dimen/button_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/all_button_layout"
                         android:onClick="function4"
-                        android:text="功能1"
+                        android:text="海报生成器"
                         android:textColor="#d6336c" />
 
                     <Button
-                        android:layout_width="@dimen/button_width"
-                        android:layout_height="@dimen/button_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/all_button_layout"
                         android:onClick="function5"
-                        android:text="功能1"
+                        android:text="二维码生成器"
                         android:textColor="#d6336c" />
 
                 </LinearLayout>
@@ -158,9 +155,8 @@
             <TextView
                 android:id="@+id/f2"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="34dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/shape_big_register_btn"
                 android:gravity="center"
                 android:text="@string/function2"
                 android:textSize="@dimen/dimen_18sp" />
@@ -177,7 +173,7 @@
             <Button
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:text="功能1"
+                android:text="每日热搜大全"
                 android:onClick="function6"
                 android:textColor="#d6336c"
                 android:background="@drawable/all_button_layout"/>

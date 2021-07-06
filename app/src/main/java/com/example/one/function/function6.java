@@ -55,14 +55,14 @@ public class function6 extends AppCompatActivity implements  ViewPager.OnPageCha
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager,true);
 
-        int id = getIntent().getIntExtra("id", 0);
-        if (id == 1) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.zhihu_container,new zhihu())
-                    .addToBackStack(null)
-                    .commit();
-        }
+//        int id = getIntent().getIntExtra("id", 0);
+//        if (id == 1) {
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.zhihu_container,new zhihu())
+//                    .addToBackStack(null)
+//                    .commit();
+//        }
 
 //        if (id == 1) {
 //            getSupportFragmentManager()

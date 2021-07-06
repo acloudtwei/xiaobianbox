@@ -72,13 +72,17 @@ public class functionactivity extends AppCompatActivity {
     public void onclick_home(View view)
     {
         Intent intent = new Intent(functionactivity.this,homeactivity.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
     public void onclick_my(View view)
     {
         Intent intent = new Intent(functionactivity.this,myactivity.class);
+       // intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
     public void function1(View view)

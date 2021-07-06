@@ -15,6 +15,8 @@ import com.example.one.R;
 import com.example.one.activity.BaseActivity;
 import com.example.one.activity.myactivity;
 import com.example.one.function.function2;
+import com.example.one.javabean;
+import com.example.one.jsonparse;
 import com.example.one.sql.User;
 import com.example.one.sql.authorconfig;
 import com.example.one.sql.feedback;
@@ -23,6 +25,10 @@ import com.example.one.textcolor.textcolor1;
 import com.example.one.util.StringUtils;
 import com.githang.statusbar.StatusBarCompat;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -32,6 +38,11 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.CountListener;
 import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.SaveListener;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class feedbacks extends BaseActivity {
 
@@ -74,6 +85,7 @@ public class feedbacks extends BaseActivity {
                                 @Override
                                 public void done(String objectId, BmobException e) {
                                     if (e == null) {
+                                        sendemail(user.getEmail(),fankui);
                                         showToast("反馈成功，感谢" + user.getUsername() + "的反馈");
                                     } else {
                                         showToast("提交失败" +e.getMessage());
@@ -83,6 +95,22 @@ public class feedbacks extends BaseActivity {
                         }
                     }
                 });
+    }
+
+    private void sendemail(String username,String message) {
+        String url = "https://api.itwei.top/get_email.php?title=用户："+username+"的反馈信息"+"&content="+username
+                +"的反馈是："+message;
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+            }
+        });
     }
 
     public void main_function(View view)
