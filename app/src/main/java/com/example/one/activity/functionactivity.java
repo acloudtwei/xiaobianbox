@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.one.R;
 import com.example.one.function.*;
 import com.example.one.function.function6;
+import com.example.one.sql.yiyan;
 import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
 
@@ -22,7 +23,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobQueryResult;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SQLQueryListener;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -123,29 +129,43 @@ public class functionactivity extends AppCompatActivity {
 
     private void getTopText()
     {
-        String url = "https://xiaojieapi.com/api/v1/get/yiyan";
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url).get().build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @SuppressLint("SetTextI18n")
+        String sql = "select * from yiyan";
+        BmobQuery<yiyan> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<yiyan>() {
             @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                top2.setText("威威工具箱，一个beta版本工具箱~");
-            }
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    JSONObject jsonobject = null;
-                    try {
-                        jsonobject = new JSONObject(response.body().string());
-                        Message message= new Message();
-                        message.what = GET_IMG;
-                        message.obj = jsonobject.optString("msg");
-                        handler.sendMessage(message);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+            public void done(BmobQueryResult<yiyan> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<yiyan> list = (List<yiyan>) bmobQueryResult.getResults();
+                    String url = list.get(0).getUrl();
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url(url).get().build();
+                    Call call = client.newCall(request);
+                    call.enqueue(new Callback() {
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            top2.setText("威威工具箱，一个beta版本工具箱~");
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                            if (response.isSuccessful()) {
+                                JSONObject jsonobject = null;
+                                try {
+                                    jsonobject = new JSONObject(response.body().string());
+                                    Message message = new Message();
+                                    message.what = GET_IMG;
+                                    message.obj = jsonobject.optString("msg");
+                                    handler.sendMessage(message);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    top2.setText("威威工具箱，一个beta版本工具箱~");
                 }
             }
         });

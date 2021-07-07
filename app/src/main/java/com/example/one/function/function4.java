@@ -221,5 +221,6 @@ private void initData()
     {
         Intent intent = new Intent(this, functionactivity.class);
         startActivity(intent);
+        finish();
     }
 }

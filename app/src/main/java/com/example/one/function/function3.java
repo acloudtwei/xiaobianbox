@@ -191,5 +191,6 @@ public class function3 extends AppCompatActivity {
     {
         Intent intent = new Intent(this, functionactivity.class);
         startActivity(intent);
+        finish();
     }
 }

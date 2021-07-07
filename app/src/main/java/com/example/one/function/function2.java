@@ -162,5 +162,6 @@ public void onclicks(View view)
     {
         Intent intent = new Intent(function2.this, functionactivity.class);
         startActivity(intent);
+        finish();
     }
 }

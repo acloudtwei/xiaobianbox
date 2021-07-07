@@ -111,6 +111,7 @@ public class function1 extends AppCompatActivity {
     {
         Intent intent = new Intent(this, functionactivity.class);
         startActivity(intent);
+        finish();
     }
 
 //    public void onclick2(View view)

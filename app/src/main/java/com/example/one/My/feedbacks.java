@@ -117,13 +117,15 @@ public class feedbacks extends BaseActivity {
     {
         Intent intent = new Intent(feedbacks.this, myactivity.class);
         startActivity(intent);
+        finish();
     }
-
 
     private void textcolor()
     {
         // 作用是修改字体的颜色
         TextView feedback_my = (TextView) findViewById(R.id.feedback_my);
+        TextView function1_text = (TextView) findViewById(R.id.function1_text);
+        textcolor1.setTextViewStyles(function1_text);
         textcolor1.setTextViewStyles(feedback_my);
 
     }

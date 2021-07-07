@@ -56,7 +56,6 @@ public class abouts extends AppCompatActivity {
         });
     }
 
-
     private void query() { //查询数据库，获取的数据存在数组里面
         TextView author = (TextView) findViewById(R.id.author);
         TextView chat = (TextView) findViewById(R.id.chat);
@@ -91,6 +90,7 @@ public class abouts extends AppCompatActivity {
     {
         Intent intent = new Intent(abouts.this, myactivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void textcolor()
@@ -100,6 +100,8 @@ public class abouts extends AppCompatActivity {
         TextView author_color = (TextView) findViewById(R.id.author_color);
         TextView chat_color = (TextView) findViewById(R.id.chat_color);
         TextView web_color = (TextView) findViewById(R.id.web_color);
+        TextView function1_text = (TextView) findViewById(R.id.function1_text);
+        textcolor1.setTextViewStyles(function1_text);
         textcolor1.setTextViewStyles(my_about);
         textcolor1.setTextViewStyles(author_color);
         textcolor1.setTextViewStyles(chat_color);

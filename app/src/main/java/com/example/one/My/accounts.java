@@ -111,6 +111,7 @@ public class accounts extends BaseActivity {
     {
         Intent intent = new Intent(accounts.this, myactivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void textcolor()
@@ -120,6 +121,8 @@ public class accounts extends BaseActivity {
         TextView accout_usernames = (TextView) findViewById(R.id.accout_usernames);
         TextView account_useremails = (TextView) findViewById(R.id.account_useremails);
         TextView account_qqs = (TextView) findViewById(R.id.account_qqs);
+        TextView function1_text = (TextView) findViewById(R.id.function1_text);
+        textcolor1.setTextViewStyles(function1_text);
         textcolor1.setTextViewStyles(accout_nicknames);
         textcolor1.setTextViewStyles(accout_usernames);
         textcolor1.setTextViewStyles(account_useremails);

@@ -161,32 +161,6 @@ public class MainActivity extends AppCompatActivity {
     
     private void get_bgs()
     {
-//        OkHttpClient client = new OkHttpClient();
-//        Request request = new Request.Builder().url("https://xiaojieapi.com/api/v1/get/greet").get().build();
-//        Call call = client.newCall(request);
-//        call.enqueue(new Callback(){
-//
-//            @Override
-//            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                try {
-//                    JSONObject jsonobject = new JSONObject(response.body().string());
-//                    Message message = new Message();
-//                    message.what = SUCCESS;
-//                    message.obj = jsonobject.optString("url");
-//                    handler.sendMessage(message);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-//                Message message = new Message();
-//                message.what = ERROR;
-//                handler.sendMessage(message);
-//            }
-//        });
-
         String sql = "select * from background";
         BmobQuery<background> bmobQuery = new BmobQuery<>();
         bmobQuery.setSQL(sql);

@@ -52,12 +52,15 @@ public class email extends BaseActivity {
     {
         Intent intent = new Intent(email.this, accounts.class);
         startActivity(intent);
+        finish();
     }
 
 
     private void textcolor() {
         // 作用是修改字体的颜色
         TextView email_emailname = (TextView) findViewById(R.id.email_emailname);
+        TextView function1_text = (TextView) findViewById(R.id.function1_text);
+        textcolor1.setTextViewStyles(function1_text);
         textcolor1.setTextViewStyles(email_emailname);
     }
 

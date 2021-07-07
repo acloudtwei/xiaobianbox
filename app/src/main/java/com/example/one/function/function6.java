@@ -153,5 +153,6 @@ public class function6 extends AppCompatActivity implements  ViewPager.OnPageCha
     {
         Intent intent = new Intent(this, functionactivity.class);
         startActivity(intent);
+        finish();
     }
 }

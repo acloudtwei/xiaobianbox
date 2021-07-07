@@ -101,15 +101,16 @@ public class PassWord extends BaseActivity {
     {
         Intent intent = new Intent(PassWord.this,myactivity.class);
         startActivity(intent);
+        finish();
     }
-
-
 
     private void textcolor()
     {
         // 作用是修改字体的颜色
         TextView before_psw = (TextView) findViewById(R.id.before_psw);
         TextView after_psw = (TextView) findViewById(R.id.after_psw);
+        TextView function1_text = (TextView) findViewById(R.id.function1_text);
+        textcolor1.setTextViewStyles(function1_text);
         textcolor1.setTextViewStyles(before_psw);
         textcolor1.setTextViewStyles(after_psw);
     }

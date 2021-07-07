@@ -62,10 +62,10 @@
                 android:id="@+id/before_psws"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/hint_style"
+                android:hint="请输入原密码"
                 android:lines="1"
                 android:textColor="#495057"
-                android:hint="请输入原密码"/>
+                android:theme="@style/hint_style" />
 
         </LinearLayout>
 

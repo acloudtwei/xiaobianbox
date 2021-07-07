@@ -9,7 +9,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
+import com.example.one.sql.authorconfig;
 import com.example.one.sql.notice;
+import com.example.one.sql.yiyan;
 import com.example.one.textcolor.*;
 
 import android.os.Handler;
@@ -283,34 +285,46 @@ public class homeactivity extends AppCompatActivity {
         finish();
     }
 
-    private void getTopText()
-    {
-        String url = "https://xiaojieapi.com/api/v1/get/yiyan";
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url).get().build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @SuppressLint("SetTextI18n")
+    private void getTopText() {
+        String sql = "select * from yiyan";
+        BmobQuery<yiyan> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<yiyan>() {
             @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                top2.setText("威威工具箱，一个beta版本工具箱~");
-            }
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    JSONObject jsonobject = null;
-                    try {
-                        jsonobject = new JSONObject(response.body().string());
-                        Message message= new Message();
-                        message.what = GET_IMG;
-                        message.obj = jsonobject.optString("msg");
-                        handler.sendMessage(message);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+            public void done(BmobQueryResult<yiyan> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<yiyan> list = (List<yiyan>) bmobQueryResult.getResults();
+                    String url = list.get(0).getUrl();
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url(url).get().build();
+                    Call call = client.newCall(request);
+                    call.enqueue(new Callback() {
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            top2.setText("威威工具箱，一个beta版本工具箱~");
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                            if (response.isSuccessful()) {
+                                JSONObject jsonobject = null;
+                                try {
+                                    jsonobject = new JSONObject(response.body().string());
+                                    Message message = new Message();
+                                    message.what = GET_IMG;
+                                    message.obj = jsonobject.optString("msg");
+                                    handler.sendMessage(message);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    top2.setText("威威工具箱，一个beta版本工具箱~");
                 }
             }
         });
     }
-
 }

@@ -72,7 +72,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:src="@mipmap/liuxing" />
+            android:src="@mipmap/star" />
 
         <TextView
             android:id="@+id/w1"
@@ -268,7 +268,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:src="@mipmap/liuxing" />
+            android:src="@mipmap/xingxing_2" />
 
         <TextView
             android:id="@+id/w2"

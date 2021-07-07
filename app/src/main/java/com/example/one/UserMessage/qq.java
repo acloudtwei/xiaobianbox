@@ -51,11 +51,14 @@ public class qq extends BaseActivity {
     {
         Intent intent = new Intent(qq.this, accounts.class);
         startActivity(intent);
+        finish();
     }
 
     private void textcolor() {
         // 作用是修改字体的颜色
         TextView qq_qqname = (TextView) findViewById(R.id.qq_qqname);
+        TextView function1_text = (TextView) findViewById(R.id.function1_text);
+        textcolor1.setTextViewStyles(function1_text);
         textcolor1.setTextViewStyles(qq_qqname);
     }
 
