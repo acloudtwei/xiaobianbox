@@ -302,7 +302,7 @@ public class homeactivity extends AppCompatActivity {
                         @SuppressLint("SetTextI18n")
                         @Override
                         public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                            top2.setText("威威工具箱，一个beta版本工具箱~");
+                            top2.setText("小编盒子，一个beta版本工具箱~");
                         }
 
                         @Override
@@ -322,7 +322,7 @@ public class homeactivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    top2.setText("威威工具箱，一个beta版本工具箱~");
+                    top2.setText("小编盒子，一个beta版本工具箱~");
                 }
             }
         });
