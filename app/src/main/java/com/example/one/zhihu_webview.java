@@ -124,7 +124,9 @@ public class zhihu_webview extends AppCompatActivity {
     public void zhihu_listview(View view)
     {
         Intent intent = new Intent(this, function6.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
 //        Intent intent = new Intent(this, function6.class);
 //        intent.putExtra("id",1);
 //        startActivity(intent);

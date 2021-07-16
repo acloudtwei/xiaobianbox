@@ -3,7 +3,9 @@ package com.example.one.activity;
 import androidx.annotation.NonNull;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,6 +33,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
@@ -80,21 +83,24 @@ public class myactivity extends BaseActivity {
     }
 
     private void query() { //查询数据库，获取的数据存在数组里面
+//        ImageView myactivity_img = (ImageView) findViewById(R.id.myactivity_img);
+//        String sql = "select * from myphoto";
+//        BmobQuery<myphoto> bmobQuery = new BmobQuery<>();
+//        bmobQuery.setSQL(sql);
+//        bmobQuery.doSQLQuery(new SQLQueryListener<myphoto>() {
+//            @Override
+//            public void done(BmobQueryResult<myphoto> bmobQueryResult, BmobException e) {
+//                if (e == null) {
+//                    List<myphoto> list = (List<myphoto>) bmobQueryResult.getResults();
+//                    Picasso.with(myactivity.this).load(list.get(0).getUrl()).into(myactivity_img);
+//                } else {
+//                    Picasso.with(myactivity.this).load("https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkjenkjaj31hc0u0dwt.jpg").into(myactivity_img);
+//                }
+//            }
+//        });
         ImageView myactivity_img = (ImageView) findViewById(R.id.myactivity_img);
-        String sql = "select * from myphoto";
-        BmobQuery<myphoto> bmobQuery = new BmobQuery<>();
-        bmobQuery.setSQL(sql);
-        bmobQuery.doSQLQuery(new SQLQueryListener<myphoto>() {
-            @Override
-            public void done(BmobQueryResult<myphoto> bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<myphoto> list = (List<myphoto>) bmobQueryResult.getResults();
-                    Picasso.with(myactivity.this).load(list.get(0).getUrl()).into(myactivity_img);
-                } else {
-                    Picasso.with(myactivity.this).load("https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkjenkjaj31hc0u0dwt.jpg").into(myactivity_img);
-                }
-            }
-        });
+        SharedPreferences sp = myactivity.this.getSharedPreferences("backimg", myactivity.MODE_PRIVATE);
+        Picasso.with(myactivity.this).load(sp.getString("backimg","")).into(myactivity_img);
     }
 
 

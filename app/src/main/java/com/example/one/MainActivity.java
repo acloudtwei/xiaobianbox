@@ -72,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
                 if(user.getEmailVerified() != null) {
                     Toast.makeText(MainActivity.this, "已经登录：" + user.getUsername(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, homeactivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
+                    finish();
                 }else {
                     Toast.makeText(MainActivity.this, "账号："+user.getUsername()+"还没有验证邮箱！", Toast.LENGTH_LONG).show();
                 }

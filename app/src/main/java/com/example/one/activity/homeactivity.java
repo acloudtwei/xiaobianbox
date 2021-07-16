@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 
 import com.example.one.sql.authorconfig;
+import com.example.one.sql.myphoto;
 import com.example.one.sql.notice;
 import com.example.one.sql.yiyan;
 import com.example.one.textcolor.*;
@@ -18,6 +19,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -75,6 +77,7 @@ public class homeactivity extends AppCompatActivity {
         getdouyin();
         getweibo();
         getzhihu();
+        get_backimg();
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -114,6 +117,36 @@ public class homeactivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void get_backimg() // 使用缓存技术
+    {
+        String sql = "select * from myphoto";
+        BmobQuery<myphoto> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<myphoto>() {
+            @Override
+            public void done(BmobQueryResult<myphoto> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<myphoto> list = (List<myphoto>) bmobQueryResult.getResults();
+                    SharedPreferences sp = getSharedPreferences("backimg", Activity.MODE_PRIVATE);
+                    String backimg = list.get(0).getUrl();
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString("backimg", backimg);
+                    edit.commit();
+                    //Picasso.with(myactivity.this).load(list.get(0).getUrl()).into(myactivity_img);
+                } else {
+                    SharedPreferences sp = getSharedPreferences("backimg", Activity.MODE_PRIVATE);
+                    String backimg = "https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkjenkjaj31hc0u0dwt.jpg";
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString("backimg", backimg);
+                    edit.commit();
+                    //Picasso.with(myactivity.this).load("https://tva1.sinaimg.cn/large/0072Vf1pgy1foxkjenkjaj31hc0u0dwt.jpg").into(myactivity_img);
+                }
+            }
+        });
+
+
     }
 
     private void getdouyin()

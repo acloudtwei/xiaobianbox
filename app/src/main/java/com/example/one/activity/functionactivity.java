@@ -127,6 +127,24 @@ public class functionactivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void spfunction1(View view)
+    {
+        Intent intent = new Intent(functionactivity.this, function6.class);
+        startActivity(intent);
+    }
+
+    public void spfunction2(View view)
+    {
+        Intent intent = new Intent(functionactivity.this, function6.class);
+        startActivity(intent);
+    }
+
+    public void spfunction3(View view)
+    {
+        Intent intent = new Intent(functionactivity.this, function6.class);
+        startActivity(intent);
+    }
+
     private void getTopText()
     {
         String sql = "select * from yiyan";
@@ -165,7 +183,7 @@ public class functionactivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    top2.setText("小编盒子，一个beta版本工具箱~");
+                    top2.setText("小编盒子，一个beta版本神奇盒子~");
                 }
             }
         });
