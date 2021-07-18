@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
+import com.example.one.sql.User;
 import com.example.one.sql.authorconfig;
 import com.example.one.sql.myphoto;
 import com.example.one.sql.notice;

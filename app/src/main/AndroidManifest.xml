@@ -24,7 +24,8 @@
         android:theme="@style/Theme.One"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
-        <activity android:name=".UserMessage.qq"></activity>
+        <activity android:name=".specialfunction.wxsport"></activity>
+        <activity android:name=".UserMessage.qq" />
         <activity android:name=".UserMessage.email" />
         <activity android:name=".UserMessage.nickname" />
         <activity android:name=".My.accounts" />

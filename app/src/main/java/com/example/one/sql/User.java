@@ -12,6 +12,37 @@ public class User extends BmobUser {
 
     private BmobGeoPoint address;
 
+    private boolean wx_sport;
+    private boolean music_163;
+    private boolean hz;
+
+    public boolean getWx_sport() {
+        return wx_sport;
+    }
+
+    public User setWx_sport(boolean wx_sport) {
+        this.wx_sport = wx_sport;
+        return this;
+    }
+
+    public boolean getMusic163() {
+        return music_163;
+    }
+
+    public User setMusic_163(boolean music_163) {
+        this.music_163 = music_163;
+        return this;
+    }
+
+    public boolean getHz() {
+        return hz;
+    }
+
+    public User setHz(boolean hz) {
+        this.hz = hz;
+        return this;
+    }
+
     public String getNickname() {
         return nickname;
     }

@@ -107,6 +107,17 @@ public class register_activity extends BaseActivity {
             @Override
             public void done(BmobUser bmobUser, BmobException e) {
                 if (e == null) {
+                    User user = BmobUser.getCurrentUser(User.class);
+                    user.setHz(true);
+                    user.setMusic_163(true);
+                    user.setWx_sport(true);
+                    user.update(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e == null) {
+                            }
+                        }
+                    });
                     Toast.makeText(register_activity.this,"注册成功，请到" + email + "邮箱中进行激活,如果没有激活无法登录!",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(register_activity.this,login_activity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);

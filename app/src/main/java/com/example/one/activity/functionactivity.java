@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.example.one.R;
 import com.example.one.function.*;
 import com.example.one.function.function6;
+import com.example.one.specialfunction.wxsport;
+import com.example.one.sql.User;
 import com.example.one.sql.yiyan;
 import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
@@ -26,6 +28,7 @@ import java.io.IOException;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SQLQueryListener;
@@ -35,7 +38,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class functionactivity extends AppCompatActivity {
+public class functionactivity extends BaseActivity {
 
     private static final int GET_IMG = 1001;
     private TextView top2;
@@ -68,11 +71,13 @@ public class functionactivity extends AppCompatActivity {
         TextView my = (TextView) findViewById(R.id.my);
         TextView f1 = (TextView) findViewById(R.id.f1);
         TextView f2 = (TextView) findViewById(R.id.f2);
+        TextView sp = (TextView) findViewById(R.id.sp);
         textcolor1.setTextViewStyles(home);
         textcolor1.setTextViewStyles(function);
         textcolor1.setTextViewStyles(my);
         textcolor1.setTextViewStyles(f1);
         textcolor1.setTextViewStyles(f2);
+        textcolor1.setTextViewStyles(sp);
     }
 
     public void onclick_home(View view)
@@ -129,8 +134,13 @@ public class functionactivity extends AppCompatActivity {
 
     public void spfunction1(View view)
     {
-        Intent intent = new Intent(functionactivity.this, function6.class);
-        startActivity(intent);
+        User user = BmobUser.getCurrentUser(User.class);
+        if(user.getWx_sport()) {
+            Intent intent = new Intent(functionactivity.this, wxsport.class);
+            startActivity(intent);
+        }else {
+            showToast("你无权使用此功能，请联系作者开放此功能!");
+        }
     }
 
     public void spfunction2(View view)
