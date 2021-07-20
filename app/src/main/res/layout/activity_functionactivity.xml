@@ -105,7 +105,7 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="58dp"
+                        android:layout_marginStart="@dimen/dimen_55dp"
                         android:background="@drawable/all_button_layout"
                         android:onClick="function3"
                         android:text="天气查询"
@@ -177,7 +177,7 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="58dp"
+                        android:layout_marginStart="@dimen/dimen_55dp"
                         android:background="@drawable/all_button_layout"
                         android:onClick="spfunction1"
                         android:text="微信刷步数"

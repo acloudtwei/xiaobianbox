@@ -48,7 +48,7 @@
                 android:layout_width="32dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/mima_3" />
+                android:src="@mipmap/mima" />
 
             <TextView
                 android:id="@+id/before_psw"

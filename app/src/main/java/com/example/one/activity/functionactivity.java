@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.one.R;
@@ -16,9 +18,14 @@ import com.example.one.function.*;
 import com.example.one.function.function6;
 import com.example.one.specialfunction.wxsport;
 import com.example.one.sql.User;
+import com.example.one.sql.myphoto;
+import com.example.one.sql.spfunction;
 import com.example.one.sql.yiyan;
 import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -31,6 +38,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FetchUserInfoListener;
 import cn.bmob.v3.listener.SQLQueryListener;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -134,13 +142,66 @@ public class functionactivity extends BaseActivity {
 
     public void spfunction1(View view)
     {
-        User user = BmobUser.getCurrentUser(User.class);
-        if(user.getWx_sport()) {
-            Intent intent = new Intent(functionactivity.this, wxsport.class);
-            startActivity(intent);
-        }else {
-            showToast("你无权使用此功能，请联系作者开放此功能!");
-        }
+        new QMUIDialog.MessageDialogBuilder(functionactivity.this)
+                .setTitle("刷步数使用方法")
+                .setMessage("1.下载小米运动APP。\n" +
+                        "2.从应用商店下载小米运动App，打开软件并选择手机号登录\n" +
+                        "3.回到App首页，点击我的->第三方接入，绑定你想同步数据的项目注：同步微信运动请按照要求关注【华米科技】公众号。\n" +
+                        "4.登陆，提交步数即可同步至你绑定的所有平台\n" +
+                        "5.如果不会使用那就关注公众号加小编，小编教你使用呢~\n" +
+                        "6.关注微信公众号：软件分享课堂，获取最新黑科技软件及资源！")
+                .addAction("不关注了", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        showToast("真的不关注公众号嘛？关注一下嘛，给小编一点点支持啦！");
+                    }
+                })
+                .addAction("已经关注啦", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        String sql = "select * from spfunction";
+                        BmobQuery<spfunction> bmobQuery = new BmobQuery<>();
+                        bmobQuery.setSQL(sql);
+                        bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
+                            @Override
+                            public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
+                                if (e == null) {
+                                    List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
+                                    if(list.get(0).isJudge())
+                                    {
+                                        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+                                            @Override
+                                            public void done(String json, BmobException e) {
+                                                if (e == null) {
+                                                    try {
+                                                        JSONObject jsonobject = new JSONObject(json);
+                                                        if(jsonobject.optString("wx_sport").equals("true")) {
+                                                            Intent intent = new Intent(functionactivity.this, wxsport.class);
+                                                            startActivity(intent);
+                                                            finish();
+                                                        }else {
+                                                            showToast("你无权使用此功能，请联系作者!");
+                                                        }
+                                                    } catch (JSONException jsonException) {
+                                                        jsonException.printStackTrace();
+                                                    }
+                                                } else {
+                                                    showToast("获取用户最新数据失败：" + e.getMessage());
+                                                }
+                                            }
+                                        });
+                                    }else{
+                                        showToast(list.get(0).getMessage());
+                                    }
+                                } else {
+                                    showToast("网络错误！");
+                                }
+                            }
+                        });
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 
     public void spfunction2(View view)

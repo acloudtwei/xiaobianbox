@@ -3,14 +3,14 @@ package com.example.one.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import android.os.Build;
 import android.os.Bundle;
 
 
-import com.example.one.sql.User;
-import com.example.one.sql.authorconfig;
 import com.example.one.sql.myphoto;
 import com.example.one.sql.notice;
 import com.example.one.sql.yiyan;
@@ -18,17 +18,16 @@ import com.example.one.textcolor.*;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.one.R;
 import com.githang.statusbar.StatusBarCompat;
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
+import com.ycbjie.notificationlib.NotificationUtils;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -40,11 +39,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SQLQueryListener;
-import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -89,7 +86,13 @@ public class homeactivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        NotificationUtils notificationUtils = new NotificationUtils(this);
+        notificationUtils.sendNotification(1,"微信公众号：软件分享课堂","关注公众号获取最新资源与黑科技软件！",R.mipmap.logo);
+
+
     }
+
 
     private void init(){
         home = (TextView) findViewById(R.id.home);

@@ -1,6 +1,5 @@
 package com.example.one.activity;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;

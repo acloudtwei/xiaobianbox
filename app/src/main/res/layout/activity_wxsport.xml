@@ -35,12 +35,13 @@
         android:id="@+id/spfunction1_img"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@+id/spfunction1_top"
         android:layout_marginTop="0dp"
+        android:layout_below="@+id/spfunction1_top"
         android:scaleType="fitXY" />
 
 
     <LinearLayout
+        android:layout_marginTop="@dimen/dimen_20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/weather"
@@ -61,7 +62,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/nicheng" />
+                android:src="@mipmap/shoujihao" />
 
             <TextView
                 android:id="@+id/spfunction1_username"
@@ -94,7 +95,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/nicheng" />
+                android:src="@mipmap/mima" />
 
             <TextView
                 android:id="@+id/spfunction1_psw"
@@ -128,7 +129,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/nicheng" />
+                android:src="@mipmap/bushu_1" />
 
             <TextView
                 android:id="@+id/spfunction1_step"

@@ -31,6 +31,10 @@ android {
 dependencies {
 
 //    implementation 'com.squareup.picasso:picasso:2.71828' // web 图片加载 new
+//    implementation 'com.github.sun-sky:Marquee:1.0.0' // 滚动头条栏
+//    implementation 'com.github.baixxx:VerticalMarqueeView:v1.3' // 滚动头条栏
+
+    implementation 'cn.yc:notificationLib:1.0.2' //安卓通知栏
     implementation 'com.squareup.picasso:picasso:2.5.2' // web 图片加载 old
     implementation 'de.hdodenhof:circleimageview:3.1.0' // 圆形图片，直接圆形加载图
     implementation 'biz.borealis.numberpicker:NumberPicker:1.0.1' //数字选择器
