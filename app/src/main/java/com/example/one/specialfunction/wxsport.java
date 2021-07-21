@@ -1,34 +1,25 @@
 package com.example.one.specialfunction;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.one.My.accounts;
 import com.example.one.R;
-import com.example.one.UserMessage.nickname;
+
 import com.example.one.activity.BaseActivity;
 import com.example.one.activity.functionactivity;
-import com.example.one.activity.myactivity;
-import com.example.one.sql.User;
+
 import com.example.one.sql.myphoto;
 import com.example.one.textcolor.textcolor1;
 import com.example.one.util.StringUtils;
 import com.githang.statusbar.StatusBarCompat;
-import com.google.gson.Gson;
-import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONException;

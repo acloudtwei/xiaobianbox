@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bt_register_begin"
+    tools:context=".specialfunction.music163s">
+
+
+    <LinearLayout
+        android:id="@+id/music163s_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_color"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="music163s_back"
+            android:background="@drawable/all_arrow"/>
+
+        <TextView
+            android:id="@+id/music163s_text"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/layout_top1"
+            android:textSize="@dimen/dimen_20sp"
+            android:layout_marginStart="@dimen/dimen_20dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/music163s_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/music163s_top"
+        android:layout_marginTop="0dp"
+        android:scaleType="fitXY" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="60dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FFFFFF"
+        android:id="@+id/music163s_photo"
+        android:src="@mipmap/xingxing"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/music163s_top"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <LinearLayout
+        android:id="@+id/music163s_center"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/weather"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/music163s_img"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/list_item"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/shoujihao" />
+
+            <TextView
+                android:id="@+id/music163s_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="昵称："
+                android:textSize="@dimen/dimen_18sp" />
+
+            <TextView
+                android:id="@+id/music163s_nicknames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/dimen_18sp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/list_item"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/mima" />
+
+            <TextView
+                android:id="@+id/music163s_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="个性签名："
+                android:textSize="@dimen/dimen_18sp" />
+
+            <TextView
+                android:id="@+id/music163s_names"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/dimen_18sp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/list_item"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/bushu_1" />
+
+            <TextView
+                android:id="@+id/music163s_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="当前等级："
+                android:textSize="@dimen/dimen_18sp" />
+
+            <TextView
+                android:id="@+id/music163s_ranks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/dimen_18sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/list_item"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/bushu_1" />
+
+            <TextView
+                android:id="@+id/music163s_song"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="累计听歌："
+                android:textSize="@dimen/dimen_18sp" />
+
+            <TextView
+                android:id="@+id/music163s_songs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/dimen_18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/music163s_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_18dp"
+        android:layout_marginRight="@dimen/dimen_18dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="@drawable/all_button_layout"
+        android:onClick="music163s_sign"
+        android:text="签到"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dimen_18sp"
+        android:layout_below="@+id/music163s_center"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_18dp"
+        android:layout_marginRight="@dimen/dimen_18dp"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:background="@drawable/all_button_layout"
+        android:text="打卡300首"
+        android:onClick="music163s_daka"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/dimen_18sp"
+        android:layout_below="@+id/music163s_sign"/>
+
+
+</RelativeLayout>

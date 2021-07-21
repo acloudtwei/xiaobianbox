@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bt_register_begin"
+    tools:context=".specialfunction.music163">
+
+    <LinearLayout
+        android:id="@+id/spfunction2_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_color"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="spfunction2_back"
+            android:background="@drawable/all_arrow"/>
+
+        <TextView
+            android:id="@+id/spfunction2_text"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/layout_top1"
+            android:textSize="@dimen/dimen_20sp"
+            android:layout_marginStart="@dimen/dimen_20dp" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/spfunction2_img"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/spfunction2_top"
+        android:layout_height="280dp"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_278dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_230dp"
+            android:layout_marginLeft="@dimen/dimen_18dp"
+            android:layout_marginRight="@dimen/dimen_18dp"
+            android:background="@drawable/shape_login_form"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dimen_43dp"
+            android:paddingRight="@dimen/dimen_31dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:src="@mipmap/account" />
+
+                <EditText
+                    android:id="@+id/spfunction2_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_20dp"
+                    android:background="@null"
+                    android:hint="请输入手机号"
+                    android:textColor="#000000"
+                    android:textColorHint="#bcbcbc"
+                    android:theme="@style/hint_style"
+                    android:textSize="@dimen/dimen_18sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1dp"
+                android:layout_marginTop="@dimen/dimen_23dp"
+                android:layout_marginBottom="@dimen/dimen_23dp"
+                android:background="#e8e7e7" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_25dp"
+                    android:layout_height="@dimen/dimen_25dp"
+                    android:src="@mipmap/mima" />
+
+                <EditText
+                    android:id="@+id/spfunction2_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_20dp"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:textColor="#000000"
+                    android:textColorHint="#bcbcbc"
+                    android:theme="@style/hint_style"
+                    android:textSize="@dimen/dimen_18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_55dp"
+            android:layout_marginLeft="@dimen/dimen_18dp"
+            android:layout_marginRight="@dimen/dimen_18dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:background="@drawable/shape_big_login_btn"
+            android:text="@string/login"
+            android:onClick="spfunction2_login"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/dimen_24sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
