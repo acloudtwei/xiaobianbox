@@ -75,7 +75,8 @@ public void onclicks(View view)
                 call.enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                        Toast.makeText(function2.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        // 失败未写
 
                     }
 

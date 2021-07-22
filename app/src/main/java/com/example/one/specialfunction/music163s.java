@@ -4,9 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.one.R;
 import com.example.one.activity.BaseActivity;
-import com.example.one.activity.functionactivity;
-import com.example.one.activity.myactivity;
-import com.example.one.sql.myphoto;
+
+import com.example.one.beans.music163s_bean;
 import com.example.one.sql.spfunction;
 import com.example.one.textcolor.textcolor1;
 import com.githang.statusbar.StatusBarCompat;
@@ -16,6 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,8 +43,12 @@ import okhttp3.Response;
 public class music163s extends BaseActivity {
 
     private static final int SUCCESS = 200;
-    private final Map<String,String> datas = new HashMap<>();
+    private static final int ERROR = 100;
     private Handler handler;
+    private Handler handlers;
+    private Map<String,String> datas = new HashMap<>();
+    final music163s_bean musics = new music163s_bean();
+    private String api = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,65 +65,36 @@ public class music163s extends BaseActivity {
         Bundle bundle = intent.getBundleExtra("music");
         if(bundle.getInt("judge") ==1 )
         {
-            String sql = "select * from spfunction";
-            BmobQuery<spfunction> bmobQuery = new BmobQuery<>();
-            bmobQuery.setSQL(sql);
-            bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
+
+            query(bundle.getString("id"));
+            handler = new Handler(new Handler.Callback() {
                 @Override
-                public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
-                    if (e == null) {
-                        List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
-                        datas.put("api",list.get(1).getUsing_api());
-                    } else {
-                        showToast("网络错误！");
-                    }
-                }
-            });
-            String url = "https://music.blibli.tk/?do=detail&uid="+bundle.getString("id");
-            OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder().url(url).build();
-            Call call = client.newCall(request);
-            call.enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    showToast("网络错误！");
-                }
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    try {
-                        JSONObject jsonobject = new JSONObject(response.body().string());
-//                        datas.put("level",jsonobject.optString("level"));
-//                        datas.put("listenSongs",jsonobject.optString("listenSongs"));
-                        JSONObject jsonobjects = new JSONObject(jsonobject.optString("profile"));
-//                        datas.put("backgroundUrl",jsonobjects.optString("backgroundUrl"));
-//                        datas.put("nickname",jsonobjects.optString("nickname"));
-//                        datas.put("avatarUrl",jsonobjects.optString("avatarUrl"));
-//                        datas.put("signature",jsonobjects.optString("signature"));
-                        Picasso.with(music163s.this).load(jsonobjects.optString("backgroundUrl")).into(music163s_img);
-                        Picasso.with(music163s.this).load(jsonobjects.optString("avatarUrl"));
-                        music163s_names.setText(jsonobjects.optString("signature"));
-                        music163s_nicknames.setText(jsonobjects.optString("nickname"));
+                public boolean handleMessage(@NonNull Message msg) {
+                    if(msg.what == SUCCESS)
+                    {
+                        JSONObject jsonobject = (JSONObject)msg.obj;
                         music163s_ranks.setText(jsonobject.optString("level"));
                         music163s_songs.setText(jsonobject.optString("listenSongs"));
+                        try {
+                            JSONObject jsonobjects = new JSONObject(jsonobject.optString("profile"));
+                            music163s_names.setText(jsonobjects.optString("signature"));
+                            music163s_nicknames.setText(jsonobjects.optString("nickname"));
+                            Picasso.with(music163s.this).load(jsonobjects.optString("backgroundUrl")).into(music163s_img);
+                            Picasso.with(music163s.this).load(jsonobjects.optString("avatarUrl")).into(music163s_photo);
 
-//                                else
-//                                {
-//                                    Intent intent = new Intent(music163.this, music163s.class);
-//                                    Bundle bundle = new Bundle();
-//                                    bundle.putInt("judge",0);
-//                                    intent.putExtra("music",bundle);
-//                                    startActivity(intent);
-//                                }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
+                    return true;
                 }
             });
+
         }else {
             showToast("登录失败，你暂未登录，无法使用！");
         }
 
-        handler = new Handler(new Handler.Callback() {
+        handlers = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
                 if(msg.what == SUCCESS)
@@ -132,37 +107,74 @@ public class music163s extends BaseActivity {
 
     }
 
-//    private void query(String id) { //查询数据库，获取的数据存在数组里面
-//
-//
-//    }
+    private void query(String id) { //查询数据库，获取的数据存在数组里面
 
-
-    public void music163s_sign(View view)
-    {
-        String url = datas.get("api")+"/?do=sign";
+        String url = "https://music.blibli.tk/?do=detail&uid="+id;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Message message = new Message();
-                message.what = SUCCESS;
-                message.obj = "签到失败，网络错误！";
-                handler.sendMessage(message);
+                showToast("网络错误！");
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     JSONObject jsonobject = new JSONObject(response.body().string());
-                    if(jsonobject.optString("code").equals("301"))
-                    {
-                        Message message = new Message();
-                        message.what = SUCCESS;
-                        message.obj = "签到成功";
-                        handler.sendMessage(message);
-                    }
+                    Message message = new Message();
+                    message.what = SUCCESS;
+                    message.obj = jsonobject;
+                    handler.sendMessage(message);
+//                                else
+//                                {
+//                                    Intent intent = new Intent(music163.this, music163s.class);
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putInt("judge",0);
+//                                    intent.putExtra("music",bundle);
+//                                    startActivity(intent);
+//                                }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+
+    public void music163s_sign(View view)
+    {
+        String sql = "select * from spfunction";
+        BmobQuery<spfunction> bmobQuery = new BmobQuery<>();bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
+            @Override
+            public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
+                    String url = list.get(1).getUsing_api()+"/?do=sign";
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder().url(url).build();
+                    Call call = client.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Message message = new Message();
+                            message.what = SUCCESS;
+                            message.obj = "签到失败，网络错误！";
+                            handler.sendMessage(message);
+                        }
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            try {
+                                JSONObject jsonobject = new JSONObject(response.body().string());
+                                if(jsonobject.optString("code").equals("301"))
+                                {
+//                                    Message message = new Message();
+//                                    message.what = SUCCESS;
+//                                    message.obj = "签到成功";
+//                                    handler.sendMessage(message);
+                                }
 //                                else
 //                                {
 //                    Message message = new Message();
@@ -170,16 +182,30 @@ public class music163s extends BaseActivity {
 //                    message.obj = "签到成功";
 //                    handler.sendMessage(message);
 //                                }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+//                    Message message = new Message();
+//                    message.what = SUCCESS;
+//                    message.obj = list.get(1).getUsing_api();
+//                    handler.sendMessage(message);
+                } else {
+//                    Message message = new Message();
+//                    message.what = ERROR;
+//                    message.obj = "网络错误，请求失败！";
+//                    handler.sendMessage(message);
                 }
             }
         });
+
     }
 
     public void music163s_daka(View view)
     {
-        String url = datas.get("api")+"/?do=daka";
+        String url = "https://music.blibli.tk"+"/?do=daka";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
         Call call = client.newCall(request);
@@ -189,7 +215,7 @@ public class music163s extends BaseActivity {
                 Message message = new Message();
                 message.what = SUCCESS;
                 message.obj = "打卡300首失败，网络错误！";
-                handler.sendMessage(message);
+                handlers.sendMessage(message);
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
@@ -200,7 +226,7 @@ public class music163s extends BaseActivity {
                         Message message = new Message();
                         message.what = SUCCESS;
                         message.obj = "成功打卡300首";
-                        handler.sendMessage(message);
+                        handlers.sendMessage(message);
                     }
 //                                else
 //                                {
@@ -240,3 +266,4 @@ public class music163s extends BaseActivity {
 
     }
 }
+

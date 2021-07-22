@@ -107,6 +107,10 @@ public class music163 extends BaseActivity {
                                 {
                                     JSONObject jsonobjects = new JSONObject(jsonobject.optString("account"));
                                     String id = jsonobjects.optString("id");
+                                    Message message = new Message();
+                                    message.what = SUCCESS;
+                                    message.obj = "加载中...";
+                                    handler.sendMessage(message);
                                     Intent intent = new Intent(music163.this, music163s.class);
                                     Bundle bundle = new Bundle();
                                     bundle.putInt("judge",1);
