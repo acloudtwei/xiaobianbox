@@ -26,7 +26,7 @@
             android:layout_marginLeft="@dimen/dimen_20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/layout_top1"
+            android:text="小编盒子（点击头像即可刷新）"
             android:textSize="@dimen/dimen_20sp"
             android:layout_marginStart="@dimen/dimen_20dp" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/shoujihao" />
+                android:src="@mipmap/wode" />
 
             <TextView
                 android:id="@+id/music163s_nickname"
@@ -106,7 +106,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/mima" />
+                android:src="@mipmap/xingqiu_3" />
 
             <TextView
                 android:id="@+id/music163s_name"
@@ -138,7 +138,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/bushu_1" />
+                android:src="@mipmap/dengji_2" />
 
             <TextView
                 android:id="@+id/music163s_rank"
@@ -170,7 +170,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/bushu_1" />
+                android:src="@mipmap/shuliang" />
 
             <TextView
                 android:id="@+id/music163s_song"
@@ -199,13 +199,13 @@
         android:layout_marginRight="@dimen/dimen_18dp"
         android:layout_marginTop="@dimen/dimen_20dp"
         android:background="@drawable/all_button_layout"
-        android:onClick="music163s_sign"
         android:text="签到"
         android:textColor="#ffffff"
         android:textSize="@dimen/dimen_18sp"
         android:layout_below="@+id/music163s_center"/>
 
     <Button
+        android:id="@+id/music163s_daka"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_18dp"
@@ -213,7 +213,6 @@
         android:layout_marginTop="@dimen/dimen_20dp"
         android:background="@drawable/all_button_layout"
         android:text="打卡300首"
-        android:onClick="music163s_daka"
         android:textColor="#ffffff"
         android:textSize="@dimen/dimen_18sp"
         android:layout_below="@+id/music163s_sign"/>

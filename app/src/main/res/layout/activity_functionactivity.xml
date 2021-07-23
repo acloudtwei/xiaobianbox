@@ -150,7 +150,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
-                    android:src="@mipmap/liuxing" />
+                    android:src="@mipmap/gexingqianming_1" />
 
                 <TextView
                     android:id="@+id/sp"

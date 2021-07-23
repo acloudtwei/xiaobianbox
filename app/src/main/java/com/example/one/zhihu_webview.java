@@ -44,6 +44,8 @@ public class zhihu_webview extends AppCompatActivity {
     }
 
     private void view_webview(int position){
+
+        // https://www.jianshu.com/p/fea5e829b30a
         WebView webView = (WebView) findViewById(R.id.zhihu_webview);
         WebSettings webSettings = webView.getSettings();
         webView.loadUrl(zhihu_urls.get(position));
@@ -72,7 +74,8 @@ public class zhihu_webview extends AppCompatActivity {
                         view.loadUrl(url);
                     }
                     else{
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        Uri uri = Uri.parse(url); //url为你要链接的地址
+                        Intent intent =new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
                     }
                     // 返回结果

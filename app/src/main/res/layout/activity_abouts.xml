@@ -100,6 +100,7 @@
                 android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:textIsSelectable="true"
                 android:gravity="center" />
 
         </LinearLayout>
@@ -129,6 +130,7 @@
                 android:id="@+id/chat"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:textIsSelectable="true"
                 android:gravity="center" />
 
         </LinearLayout>
@@ -158,6 +160,7 @@
                 android:id="@+id/web"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:textIsSelectable="true"
                 android:gravity="center" />
 
         </LinearLayout>

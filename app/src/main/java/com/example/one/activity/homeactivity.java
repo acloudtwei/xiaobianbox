@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import com.example.one.sql.myphoto;
 import com.example.one.sql.notice;
+import com.example.one.sql.spfunction;
 import com.example.one.sql.yiyan;
 import com.example.one.textcolor.*;
 
@@ -76,6 +77,7 @@ public class homeactivity extends AppCompatActivity {
         getweibo();
         getzhihu();
         get_backimg();
+        get_spapi();
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -123,6 +125,32 @@ public class homeactivity extends AppCompatActivity {
         });
     }
 
+    private void get_spapi()
+    {
+        String sql = "select * from spfunction";
+        BmobQuery<spfunction> bmobQuery = new BmobQuery<>();
+        bmobQuery.setSQL(sql);
+        bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
+            @Override
+            public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
+                    SharedPreferences sp = getSharedPreferences("api", Context.MODE_PRIVATE);
+                    String api = list.get(1).getUsing_api();
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString("api", api);
+                    edit.commit();
+                } else {
+                    SharedPreferences sp = getSharedPreferences("api", Context.MODE_PRIVATE);
+                    String api = "https://api.itwei.top/163music";
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putString("api", api);
+                    edit.commit();
+                }
+            }
+        });
+    }
+
     private void get_backimg() // 使用缓存技术
     {
         String sql = "select * from myphoto";
@@ -149,8 +177,6 @@ public class homeactivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     private void getdouyin()

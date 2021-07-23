@@ -4,18 +4,22 @@ package com.example.one.specialfunction;
 import com.example.one.R;
 import com.example.one.activity.BaseActivity;
 import com.example.one.activity.functionactivity;
+import com.example.one.activity.myactivity;
 import com.example.one.sql.myphoto;
 import com.example.one.sql.spfunction;
 import com.example.one.textcolor.textcolor1;
 import com.example.one.util.StringUtils;
 import com.example.one.weibo_webview;
 import com.githang.statusbar.StatusBarCompat;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,6 +39,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SQLQueryListener;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Headers;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -60,7 +65,6 @@ public class music163 extends BaseActivity {
                 return true;
             }
         });
-
     }
 
     public void spfunction2_login(View view)
@@ -78,73 +82,65 @@ public class music163 extends BaseActivity {
             return;
         }
 
-        String sql = "select * from spfunction";
-        BmobQuery<spfunction> bmobQuery = new BmobQuery<>();
-        bmobQuery.setSQL(sql);
-        bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
+        Message message = new Message();
+        message.what = SUCCESS;
+        message.obj = "登录中...";
+        handler.sendMessage(message);
+
+        SharedPreferences sp = music163.this.getSharedPreferences("api", music163.MODE_PRIVATE);
+        String url = sp.getString("api","")+"/?do=login&uin="+username+"&pwd="+psw;
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
             @Override
-            public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
-                    String url = list.get(1).getUsing_api()+"/?do=login&uin="+username+"&pwd="+psw;
-//                    String url = "https://music.blibli.tk/?do=login&uin=18144639064&pwd=acloudtwei9999";
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder().url(url).build();
-                    Call call = client.newCall(request);
-                    call.enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            Message message = new Message();
-                            message.what = SUCCESS;
-                            message.obj = "网络错误："+e.getMessage()+ "  " +url;
-                            handler.sendMessage(message);
-                        }
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-                            try {
-                                JSONObject jsonobject = new JSONObject(response.body().string());
-                                if(jsonobject.optString("code").equals("200"))
-                                {
-                                    JSONObject jsonobjects = new JSONObject(jsonobject.optString("account"));
-                                    String id = jsonobjects.optString("id");
+            public void onFailure(Call call, IOException e) {
+                Message message = new Message();
+                message.what = SUCCESS;
+                message.obj = "网络错误："+e.getMessage();
+                handler.sendMessage(message);
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (null != response) {//response 不为空
+                    if (response.isSuccessful()) {
+                        try {
+                            JSONObject jsonobject = new JSONObject(response.body().string());
+                            if (jsonobject.optString("code").equals("200")) {
+                                JSONObject jsonobjects = new JSONObject(jsonobject.optString("account"));
+                                String id = jsonobjects.optString("id");
+                                Headers headers = response.headers();
+                                List<String> cookies = headers.values("Set-Cookie");
+                                Intent intent = new Intent(music163.this, music163s.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("judge", 1);
+                                bundle.putString("id", id);
+                                bundle.putString("cookie",cookies.get(0));
+                                intent.putExtra("music", bundle);
+                                startActivity(intent);
+
+                            } else {
+                                if (jsonobject.optString("code").equals("400")) {
                                     Message message = new Message();
                                     message.what = SUCCESS;
-                                    message.obj = "加载中...";
+                                    message.obj = "账号不正确";
                                     handler.sendMessage(message);
-                                    Intent intent = new Intent(music163.this, music163s.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putInt("judge",1);
-                                    bundle.putString("id",id);
-                                    intent.putExtra("music",bundle);
-                                    startActivity(intent);
-
+                                } else {
+                                    Message message = new Message();
+                                    message.what = SUCCESS;
+                                    message.obj = jsonobject.optString("msg");
+                                    handler.sendMessage(message);
                                 }
-                                else
-                                {
-                                    if(jsonobject.optString("code").equals("400"))
-                                    {
-                                        Message message = new Message();
-                                        message.what = SUCCESS;
-                                        message.obj = "账号不正确";
-                                        handler.sendMessage(message);
-                                    }else
-                                    {
-                                        Message message = new Message();
-                                        message.what = SUCCESS;
-                                        message.obj = jsonobject.optString("msg");
-                                        handler.sendMessage(message);
-                                    }
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
                             }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                } else {
-                    showToast("网络错误！");
+
+                    }
                 }
             }
         });
+
     }
 
     private void query() { //查询数据库，获取的数据存在数组里面

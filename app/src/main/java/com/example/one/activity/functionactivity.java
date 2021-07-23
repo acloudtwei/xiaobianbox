@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -207,45 +208,76 @@ public class functionactivity extends BaseActivity {
 
     public void spfunction2(View view)
     {
-        String sql = "select * from spfunction";
-        BmobQuery<spfunction> bmobQuery = new BmobQuery<>();
-        bmobQuery.setSQL(sql);
-        bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
-            @Override
-            public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
-                    if(list.get(1).isJudge())
-                    {
-                        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
-                            @Override
-                            public void done(String json, BmobException e) {
-                                if (e == null) {
-                                    try {
-                                        JSONObject jsonobject = new JSONObject(json);
-                                        if(jsonobject.optString("music_163").equals("true")) {
-                                            Intent intent = new Intent(functionactivity.this, music163.class);
-                                            startActivity(intent);
-                                            finish();
-                                        }else {
-                                            showToast("你无权使用此功能，请联系作者!");
-                                        }
-                                    } catch (JSONException jsonException) {
-                                        jsonException.printStackTrace();
-                                    }
-                                } else {
-                                    showToast("获取用户最新数据失败：" + e.getMessage());
-                                }
-                            }
-                        });
-                    }else{
-                        showToast(list.get(0).getMessage());
+        final QMUIDialog.EditTextDialogBuilder builder = new QMUIDialog.EditTextDialogBuilder(functionactivity.this);
+        builder.setTitle("请输入密码")
+                .setPlaceholder("密码可在公众号内获取！")
+                .setInputType(InputType.TYPE_CLASS_TEXT)
+                .addAction("取消", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        showToast("去关注公众号就可以获取密码啦！");
                     }
-                } else {
-                    showToast("网络错误！");
-                }
-            }
-        });
+                })
+                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        String text = String.valueOf(builder.getEditText().getText());
+                        if (text != null && text.length() > 0) {
+                            showToast("校验中...");
+                            String sql = "select * from spfunction";
+                            BmobQuery<spfunction> bmobQuery = new BmobQuery<>();
+                            bmobQuery.setSQL(sql);
+                            bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
+                                @Override
+                                public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
+                                    if (e == null) {
+                                        List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
+                                        if(text.equals(list.get(1).getPassword()))
+                                        {
+                                            if(list.get(1).isJudge())
+                                            {
+                                                BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+                                                    @Override
+                                                    public void done(String json, BmobException e) {
+                                                        if (e == null) {
+                                                            try {
+                                                                JSONObject jsonobject = new JSONObject(json);
+                                                                if(jsonobject.optString("music_163").equals("true")) {
+                                                                    Intent intent = new Intent(functionactivity.this, music163.class);
+                                                                    startActivity(intent);
+                                                                    finish();
+                                                                }else {
+                                                                    showToast("你无权使用此功能，请联系作者!");
+                                                                }
+                                                            } catch (JSONException jsonException) {
+                                                                jsonException.printStackTrace();
+                                                            }
+                                                        } else {
+                                                            showToast("获取用户最新数据失败：" + e.getMessage());
+                                                        }
+                                                    }
+                                                });
+                                            }else{
+                                                showToast(list.get(0).getMessage());
+                                            }
+                                        }else {
+                                            showToast("密码错误，请重新输入！");
+                                        }
+                                    }
+                                }
+                            });
+
+//                            Toast.makeText(getActivity(), "您的昵称: " + text, Toast.LENGTH_SHORT).show();
+//                            dialog.dismiss();
+                        } else {
+                            showToast("请输入密码哦~");
+                        }
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+
+
     }
 
     public void spfunction3(View view)
