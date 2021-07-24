@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bt_register_begin"
+    tools:context=".specialfunction.hz">
+
+
+    <LinearLayout
+        android:id="@+id/hz_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_color"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="hz_back"
+            android:background="@drawable/all_arrow"/>
+
+        <TextView
+            android:id="@+id/hz_text"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/layout_top1"
+            android:textSize="@dimen/dimen_20sp"
+            android:layout_marginStart="@dimen/dimen_20dp" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/hz_img"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="0dp"
+        android:layout_below="@+id/hz_top"
+        android:scaleType="fitXY" />
+
+
+    <LinearLayout
+        android:id="@+id/hz_center"
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/weather"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/hz_img"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/list_item"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/shoujihao" />
+
+            <TextView
+                android:id="@+id/hz_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="手机号："
+                android:textSize="@dimen/dimen_18sp" />
+
+            <EditText
+                android:id="@+id/hz_phones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:theme="@style/hint_style"
+                android:hint="请输入你要轰炸的手机号" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="hz_submit"
+            android:background="@drawable/all_button_layout"
+            android:textColor="@color/white"
+            android:text="开始轰炸"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimen_40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/weather"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/hz_center"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/list_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/mima" />
+
+        <TextView
+            android:id="@+id/hz_psw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="请复制密码："
+            android:textSize="@dimen/dimen_18sp" />
+
+        <TextView
+            android:id="@+id/hz_psws"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="@dimen/dimen_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="hz_submits"
+        android:background="@drawable/all_button_layout"
+        android:textColor="@color/white"
+        android:text="进入web版本"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

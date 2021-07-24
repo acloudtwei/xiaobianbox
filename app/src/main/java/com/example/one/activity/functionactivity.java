@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.one.R;
 import com.example.one.function.*;
 import com.example.one.function.function6;
+import com.example.one.specialfunction.hz;
 import com.example.one.specialfunction.music163;
 import com.example.one.specialfunction.wxsport;
 import com.example.one.sql.User;
@@ -282,8 +283,68 @@ public class functionactivity extends BaseActivity {
 
     public void spfunction3(View view)
     {
-        Intent intent = new Intent(functionactivity.this, function6.class);
-        startActivity(intent);
+        new QMUIDialog.MessageDialogBuilder(functionactivity.this)
+                .setTitle("轰炸鸡注意事项！")
+                .setMessage("1.里面有两个版本，一个是系统版，一个是web版。\n" +
+                        "2.系统版直接输入手机号轰炸，web版本要先复制密码进去才可以！\n" +
+                        "3.轰炸时间有点长，轰炸完成后会有提示说明！。\n" +
+                        "4.如果不会使用那就关注公众号加小编，小编教你使用呢~\n" +
+                        "5.关注微信公众号：软件分享课堂，获取最新黑科技软件及资源！")
+                .addAction("取消", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        showToast("不尝试一波？专整治骗子！");
+                    }
+                })
+                .addAction("进入", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        String sql = "select * from spfunction";
+                        BmobQuery<spfunction> bmobQuery = new BmobQuery<>();
+                        bmobQuery.setSQL(sql);
+                        bmobQuery.doSQLQuery(new SQLQueryListener<spfunction>() {
+                            @Override
+                            public void done(BmobQueryResult<spfunction> bmobQueryResult, BmobException e) {
+                                if (e == null) {
+                                    List<spfunction> list = (List<spfunction>) bmobQueryResult.getResults();
+                                    if(list.get(2).isJudge())
+                                    {
+                                        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+                                            @Override
+                                            public void done(String json, BmobException e) {
+                                                if (e == null) {
+                                                    try {
+                                                        JSONObject jsonobject = new JSONObject(json);
+                                                        if(jsonobject.optString("hz").equals("true")) {
+                                                            Intent intent = new Intent(functionactivity.this, hz.class);
+                                                            Bundle bundle = new Bundle();
+                                                            bundle.putString("password",list.get(2).getPassword());
+                                                            intent.putExtra("hz",bundle);
+                                                            startActivity(intent);
+                                                            finish();
+                                                        }else {
+                                                            showToast("你无权使用此功能，请联系作者!");
+                                                        }
+                                                    } catch (JSONException jsonException) {
+                                                        jsonException.printStackTrace();
+                                                    }
+                                                } else {
+                                                    showToast("获取用户最新数据失败：" + e.getMessage());
+                                                }
+                                            }
+                                        });
+                                    }else{
+                                        showToast(list.get(2).getMessage());
+                                    }
+                                } else {
+                                    showToast("网络错误！");
+                                }
+                            }
+                        });
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 
     private void getTopText()

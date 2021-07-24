@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.one">
-    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -13,7 +13,9 @@
         android:theme="@style/Theme.One"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
-        <activity android:name=".specialfunction.music163s"></activity>
+        <activity android:name=".specialfunction.hz_web"></activity>
+        <activity android:name=".specialfunction.hz" />
+        <activity android:name=".specialfunction.music163s" />
         <activity android:name=".specialfunction.music163" />
         <activity android:name=".specialfunction.wxsport" />
         <activity android:name=".UserMessage.qq" />
@@ -69,13 +71,13 @@
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.example.one.BmobContentProvider" />
-    </application> <!-- 获取sd卡写的权限，用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许读取手机状态 用于创建BmobInstallation -->
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 推送所需的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 推送所需的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />

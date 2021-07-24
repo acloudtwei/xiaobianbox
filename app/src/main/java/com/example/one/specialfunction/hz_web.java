@@ -1,4 +1,4 @@
-package com.example.one;
+package com.example.one.specialfunction;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,44 +11,45 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.one.R;
+import com.example.one.activity.functionactivity;
 import com.example.one.function.function6;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.example.one.sql.myphoto;
+import com.example.one.sql.spfunction;
+import com.example.one.zhihu_webview;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class weibo_webview extends AppCompatActivity {
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobQueryResult;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SQLQueryListener;
 
-    private List<String> weibo_urls = new ArrayList<>();
+public class hz_web extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weibo_webview);
-        SharedPreferences sp = Objects.requireNonNull(weibo_webview.this).getSharedPreferences("weibo", Activity.MODE_PRIVATE);
-        String urls_listJson = sp.getString("weibo_json_url","");
-        if(!urls_listJson.equals(""))
-        {
-            Gson gson = new Gson();
-            weibo_urls = gson.fromJson(urls_listJson,new TypeToken<List<String>>(){}.getType());
-        }
-        Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("weibo");
-        int position =  bundle.getInt("position");
-        view_webview(position);
+        setContentView(R.layout.activity_hz_web);
+        view_webview();
 
     }
 
-    private void view_webview(int position){
-        WebView webView = (WebView) findViewById(R.id.weibo_webview);
+    private void view_webview(){
+
+        Intent intent = getIntent();
+        Bundle bundles = intent.getBundleExtra("hz");
+        WebView webView = (WebView) findViewById(R.id.hzweb_webview);
         WebSettings webSettings = webView.getSettings();
-        webView.loadUrl(weibo_urls.get(position));
+        webView.loadUrl(bundles.getString("api"));
         //清除网页访问留下的缓存 ,由于内核缓存是全局的因此这个方法不仅仅针对webview而是针对整个应用程序.
         webView.clearCache(true);
         //进行配置-利用WebSettings子类
@@ -67,10 +68,12 @@ public class weibo_webview extends AppCompatActivity {
 
         webView.setWebViewClient(new WebViewClient(){
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                //使用WebView加载显示url
-                view.loadUrl(url);
-                //返回true
+            public boolean shouldOverrideUrlLoading (WebView view, WebResourceRequest request) {
+                String url =request.getUrl().toString();
+                if(url.startsWith("http") || url.startsWith("https")){
+                    //使用WebView加载显示url
+                    view.loadUrl(url);
+                }
                 return true;
             }
         });
@@ -96,26 +99,18 @@ public class weibo_webview extends AppCompatActivity {
 
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 //设定加载开始的操作
-                Toast.makeText(weibo_webview.this,"加载中...",Toast.LENGTH_SHORT).show();
-                if(url.contains("weibo://"))
-                {
-                    view.loadUrl("https://s.weibo.com/top/summary");
-                }
+                Toast.makeText(hz_web.this,"加载中...",Toast.LENGTH_SHORT).show();
             }
-
         });
+
     }
 
 
-    public void weibo_listview(View view)
+    public void hzweb_back(View view)
     {
-        Intent intent = new Intent(this, function6.class);
+        Intent intent = new Intent(hz_web.this, functionactivity.class);
         //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
-//        Intent intent = new Intent(this, function6.class);
-//        intent.putExtra("id",1);
-//        startActivity(intent);
-//        overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
     }
 }

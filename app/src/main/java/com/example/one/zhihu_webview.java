@@ -9,7 +9,9 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -45,10 +47,12 @@ public class zhihu_webview extends AppCompatActivity {
 
     private void view_webview(int position){
 
-        // https://www.jianshu.com/p/fea5e829b30a
         WebView webView = (WebView) findViewById(R.id.zhihu_webview);
         WebSettings webSettings = webView.getSettings();
-        webView.loadUrl(zhihu_urls.get(position));
+        String url = zhihu_urls.get(position);
+        webView.loadUrl(url);
+
+
         //清除网页访问留下的缓存 ,由于内核缓存是全局的因此这个方法不仅仅针对webview而是针对整个应用程序.
         webView.clearCache(true);
         //进行配置-利用WebSettings子类
@@ -65,11 +69,13 @@ public class zhihu_webview extends AppCompatActivity {
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
+
         webView.setWebViewClient(new WebViewClient(){
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading (WebView view, WebResourceRequest request) {
+                String url =request.getUrl().toString();
                 try {
-                    if(webView.getUrl().startsWith("http") || webView.getUrl().startsWith("https")){
+                    if(url.startsWith("http") || url.startsWith("https")){
                         //使用WebView加载显示url
                         view.loadUrl(url);
                     }
@@ -86,6 +92,8 @@ public class zhihu_webview extends AppCompatActivity {
                 }
             }
         });
+
+
 
 //        mWebView.setWebViewClient(new WebViewClient() {
 //            @Override
@@ -113,16 +121,41 @@ public class zhihu_webview extends AppCompatActivity {
 //
 //        });
 
+        webView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    //按返回键操作并且能回退网页
+                    if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
+                        //后退
+                        webView.goBack();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+
         webView.setWebViewClient(new WebViewClient(){
             @Override
 
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 //设定加载开始的操作
                 Toast.makeText(zhihu_webview.this,"加载中...",Toast.LENGTH_SHORT).show();
+                if(url.startsWith("zhihu://"))
+                {
+                    String urls =url.replace("zhihu://","https://www.zhihu.com/");
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    Uri content_url = Uri.parse(urls);
+                    intent.setData(content_url);
+                    startActivity(Intent.createChooser(intent, "请选择浏览器"));
+                }
             }
-
         });
     }
+
 
     public void zhihu_listview(View view)
     {
