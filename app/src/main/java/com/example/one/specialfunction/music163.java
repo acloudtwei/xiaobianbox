@@ -84,7 +84,7 @@ public class music163 extends BaseActivity {
 
         Message message = new Message();
         message.what = SUCCESS;
-        message.obj = "登录中...";
+        message.obj = "第一次登录时间较长，正在登录中...";
         handler.sendMessage(message);
 
         SharedPreferences sp = music163.this.getSharedPreferences("api", music163.MODE_PRIVATE);

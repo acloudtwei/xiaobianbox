@@ -76,7 +76,7 @@ public class function1 extends AppCompatActivity {
 
     private void getimg()
     {
-        String url = "https://xiaojieapi.com/api/v1/get/60s?name=%E5%A8%81%E5%A8%81%E5%B7%A5%E5%85%B7%E7%AE%B1";
+        String url = "https://xiaojieapi.com/api/v1/get/60s?name=%E5%B0%8F%E7%BC%96%E7%9B%92%E5%AD%90";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).get().build();
         Call call = client.newCall(request);

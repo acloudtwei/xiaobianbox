@@ -103,6 +103,12 @@ public class wxsport extends BaseActivity {
             showToast("请输入修改步数！");
             return;
         }
+
+        Message message = new Message();
+        message.what = SUCCESS;
+        message.obj = "正在进行刷步数中，请等待成功提示！";
+        handler.sendMessage(message);
+
         String url = "https://api.itwei.top/get_mi.php?phone="+username
                 +"&password="+psw
                 +"&steps="+step;

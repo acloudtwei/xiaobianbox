@@ -208,7 +208,7 @@ public class music163s extends BaseActivity {
                     public void onFailure(Call call, IOException e) {
                         Message message = new Message();
                         message.what = SUCCESS;
-                        message.obj = "打卡300首失败，网络错误！";
+                        message.obj = "部分网络错误，请点击头像查看是否成功打卡！";
                         handlers.sendMessage(message);
                     }
                     @Override
