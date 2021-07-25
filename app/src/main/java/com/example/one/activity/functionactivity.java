@@ -287,7 +287,7 @@ public class functionactivity extends BaseActivity {
                 .setTitle("轰炸鸡注意事项！")
                 .setMessage("1.里面有两个版本，一个是系统版，一个是web版。\n" +
                         "2.系统版直接输入手机号轰炸，web版本要先复制密码进去才可以！\n" +
-                        "3.轰炸时间有点长，建议优先使用web版本，web版本强度大！！！\n" +
+                        "3.建议优先使用web版本，web版本强度大，但是有时会出现网络问题！！！\n" +
                         "4.如果不会使用那就关注公众号加小编，小编教你使用呢~\n" +
                         "5.关注微信公众号：软件分享课堂，获取最新黑科技软件及资源！")
                 .addAction("取消", new QMUIDialogAction.ActionListener() {

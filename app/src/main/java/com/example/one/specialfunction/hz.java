@@ -26,7 +26,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobQueryResult;
@@ -161,7 +160,6 @@ public class hz extends BaseActivity {
                     }
                 }
             });
-
     }
 
     public void hz_back(View view)
@@ -170,7 +168,6 @@ public class hz extends BaseActivity {
         startActivity(intent);
         finish();
     }
-
 
     private void textcolor() {
         // 作用是修改字体的颜色

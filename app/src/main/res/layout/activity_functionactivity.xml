@@ -230,7 +230,7 @@
                 android:layout_height="34dp"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:text="@string/function2"
+                android:text="最新热搜"
                 android:textSize="@dimen/dimen_18sp" />
 
         </LinearLayout>
