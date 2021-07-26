@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 
+import com.example.one.MainActivity;
 import com.example.one.sql.myphoto;
 import com.example.one.sql.notice;
 import com.example.one.sql.spfunction;
@@ -21,6 +22,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,8 +42,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FetchUserInfoListener;
 import cn.bmob.v3.listener.SQLQueryListener;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -78,6 +82,19 @@ public class homeactivity extends AppCompatActivity {
         getzhihu();
         get_backimg();
         get_spapi();
+
+        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+            @Override
+            public void done(String json, BmobException e) {
+                if (e != null) {
+                    Toast.makeText(homeactivity.this,"你已进入黑名单用户列表：" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(homeactivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }
+        });
+
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
@@ -91,7 +108,6 @@ public class homeactivity extends AppCompatActivity {
 
         NotificationUtils notificationUtils = new NotificationUtils(this);
         notificationUtils.sendNotification(1,"微信公众号：软件分享课堂","关注公众号获取最新资源与黑科技软件！",R.mipmap.logo);
-
 
     }
 

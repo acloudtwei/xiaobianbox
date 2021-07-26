@@ -216,7 +216,7 @@ public class functionactivity extends BaseActivity {
                 .addAction("取消", new QMUIDialogAction.ActionListener() {
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {
-                        showToast("去关注公众号就可以获取密码啦！");
+                        showToast("去关注公众号回复“密码”就可以获取啦！");
                     }
                 })
                 .addAction("确定", new QMUIDialogAction.ActionListener() {
@@ -262,7 +262,7 @@ public class functionactivity extends BaseActivity {
                                                 showToast(list.get(0).getMessage());
                                             }
                                         }else {
-                                            showToast("密码错误，请重新输入！");
+                                            showToast("密码错误，请重新输入（关注公众号即可获取密码）！");
                                         }
                                     }
                                 }

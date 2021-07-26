@@ -118,7 +118,7 @@ public class register_activity extends BaseActivity {
                             }
                         }
                     });
-                    Toast.makeText(register_activity.this,"注册成功，请到" + email + "邮箱中进行激活,如果没有激活无法登录!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(register_activity.this,"注册成功，请到" + email + "邮箱中进行激活,如果没有激活无法登录（注意查看邮箱）!",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(register_activity.this,login_activity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

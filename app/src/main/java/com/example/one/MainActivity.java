@@ -37,6 +37,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FetchUserInfoListener;
 import cn.bmob.v3.listener.SQLQueryListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.update.BmobUpdateAgent;
@@ -67,20 +68,58 @@ public class MainActivity extends AppCompatActivity {
         get_bgs();
         initView();
         initData();
-            if (BmobUser.isLogin()) {
-                User user = BmobUser.getCurrentUser(User.class);
-                if(user.getEmailVerified() != null) {
-                    Toast.makeText(MainActivity.this, "已经登录：" + user.getUsername(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this, homeactivity.class);
-                    //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                }else {
-                    Toast.makeText(MainActivity.this, "账号："+user.getUsername()+"还没有验证邮箱！", Toast.LENGTH_LONG).show();
+
+        BmobUser.fetchUserInfo(new FetchUserInfoListener<BmobUser>() {
+            @Override
+            public void done(BmobUser user, BmobException e) {
+                if (e == null) {
+                    if (BmobUser.isLogin()) {
+                        if(user.getEmailVerified() != null) {
+                            if(user.getEmailVerified())
+                            {
+                                Toast.makeText(MainActivity.this, "已经登录：" + user.getUsername(), Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(MainActivity.this, homeactivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        }else {
+                            Toast.makeText(MainActivity.this, "账号："+user.getUsername()+"还没有验证邮箱！", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_LONG).show();
+                    }
                 }
-            } else {
-                    Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_LONG).show();
-        }
+            }
+        });
+
+
+
+//        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+//            @Override
+//            public void done(String json, BmobException e) {
+//                if (e == null) {
+//                    if (BmobUser.isLogin()) {
+//                        User user = BmobUser.getCurrentUser(User.class);
+//                        if(user.getEmailVerified() != null) {
+//                            if(user.getEmailVerified())
+//                            {
+//                                Toast.makeText(MainActivity.this, "已经登录：" + user.getUsername(), Toast.LENGTH_LONG).show();
+//                                Intent intent = new Intent(MainActivity.this, homeactivity.class);
+//                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                startActivity(intent);
+//                            }
+//                        }else {
+//                            Toast.makeText(MainActivity.this, "账号："+user.getUsername()+"还没有验证邮箱！", Toast.LENGTH_LONG).show();
+//                        }
+//                    } else {
+//                        Toast.makeText(MainActivity.this, "尚未登录", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                }
+//            }
+//        });
+
+
 
 //        BmobUpdateAgent.setUpdateOnlyWifi(false);
 //        BmobUpdateAgent.update(this);
