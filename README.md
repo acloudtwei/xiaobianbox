@@ -9,6 +9,8 @@
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2021/1016/145518_5c025f4c_7386951.jpeg "4.jpg")
 
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1016/145619_f9c6ba99_7386951.jpeg "5.jpg")
+
 #### 软件架构
 
 - 前端直接使用了安卓开发，用了一下依赖
