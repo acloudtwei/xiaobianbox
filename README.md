@@ -6,10 +6,8 @@
 目前初始版，功能没多少，还没有优化，没有后台系统，对接了其他的serverless系统构成后端系统，目前只有几个小功能 :grin:  :grimacing:  :grimacing: ~
 
 **演示图：**
-![演示图1](https://images.gitee.com/uploads/images/2021/1016/145141_474c77a0_7386951.jpeg "1.jpg")
 
-![演示图2](https://images.gitee.com/uploads/images/2021/1016/145152_b57d020a_7386951.jpeg "2.jpg")
-<br/>
+![输入图片说明](https://images.gitee.com/uploads/images/2021/1016/145518_5c025f4c_7386951.jpeg "4.jpg")
 
 #### 软件架构
 
