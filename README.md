@@ -7,9 +7,7 @@
 
 **演示图：**
 
-![输入图片说明](https://images.gitee.com/uploads/images/2021/1016/145518_5c025f4c_7386951.jpeg "4.jpg")
-
-![输入图片说明](https://images.gitee.com/uploads/images/2021/1016/145619_f9c6ba99_7386951.jpeg "5.jpg")
+![小编盒子APP](https://images.gitee.com/uploads/images/2021/1016/145748_cf0e93c8_7386951.jpeg "4.jpg")
 
 #### 软件架构
 
